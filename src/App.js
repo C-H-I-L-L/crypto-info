@@ -1,88 +1,34 @@
 import React, { Component } from 'react';
-import CryptoCard from './components/crypto-card/index';
+import Cards from './components/cards';
+import Nav from './components/nav';
+
+import WhatIs from './components/whatIs';
+import AboutUs from './components/aboutUs';
+import CryptoHistories from './components/cryptoHistories';
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import './app.css';
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      BTCChecked: false,
-      LTCChecked: false,
-      XMRChecked: false,
-      ETHChecked: false
+      isLoading: true
     };
   }
 
-  handleBTCChange = () => {
-    this.setState(prevState => ({
-      BTCChecked: !prevState.BTCChecked
-    }));
-
-    console.log(this.state.BTCChecked);
-  };
-
-  handleLTCChange = () => {
-    this.setState(prevState => ({
-      LTCChecked: !prevState.LTCChecked
-    }));
-
-    console.log('LTC', this.state.LTCChecked);
-  };
-
-  handleXMRChange = () => {
-    this.setState(prevState => ({
-      XMRChecked: !prevState.XMRChecked
-    }));
-
-    console.log('XMR', this.state.XMRChecked);
-  };
-
-  handleETHChange = () => {
-    this.setState(prevState => ({
-      ETHChecked: !prevState.ETHChecked
-    }));
-
-    console.log('ETH', this.state.ETHChecked);
-  };
-
   render() {
     return (
-      <div>
-        <div className='checkboxes'>
-          <input type='checkbox' onChange={this.handleBTCChange} name='(BTC)' />
-          <input
-            type='checkbox'
-            label='Litecoin(LTC)'
-            onChange={this.handleLTCChange}
-          />
-          <input
-            type='checkbox'
-            label='Monero(XMR)'
-            onChange={this.handleXMRChange}
-          />
-          <input
-            type='checkbox'
-            label='Ethereum(ETH)'
-            onChange={this.handleETHChange}
-          />
-        </div>
-        <div className='cards'>
-          {this.state.BTCChecked === true ? (
-            <CryptoCard name='Bitcoin' symbol='BTC' />
-          ) : null}
-
-          {this.state.LTCChecked ? (
-            <CryptoCard name='Litecoin' symbol='LTC' />
-          ) : null}
-
-          {this.state.XMRChecked ? (
-            <CryptoCard name='Monero' symbol='XMR' />
-          ) : null}
-
-          {this.state.ETHChecked ? (
-            <CryptoCard name='Ethereum' symbol='ETH' />
-          ) : null}
-        </div>
+      <div classname='App'>
+        <Nav />
+        <Cards />
+        <Switch>
+          <Route exact path='/' component={WhatIs} />
+          <Route exact path='/about-us' component={AboutUs} />
+          <Route exact path='/histories' component={CryptoHistories} />
+        </Switch>
       </div>
     );
   }

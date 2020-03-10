@@ -48,7 +48,7 @@ class CryptoCard extends Component {
     const gainloss = lastPrice > price ? 'loss' : 'gain';
 
     return (
-      <>
+      <div className='cards'>
         <div className={`card ${gainloss}`}>
           <div className='name'>
             {name}
@@ -63,7 +63,7 @@ class CryptoCard extends Component {
 
           <div className={`price ${gainloss}`}>{price}</div>
         </div>
-      </>
+      </div>
     );
   }
 }
