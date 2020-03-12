@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CryptoCard from './crypto-card/index';
+import CryptoCard from './index';
 
 class App extends Component {
   constructor() {
@@ -37,33 +37,37 @@ class App extends Component {
     }));
   };
 
-  //   componentDidMount() {
-  //     this.setState({ BTCChecked: true });
-  //   }
+  componentDidMount() {
+    this.setState({ BTCChecked: true });
+  }
 
   render() {
     return (
       <div classname='content'>
         <div className='checkboxes'>
           <input type='checkbox' onChange={this.handleBTCChange} name='(BTC)' />
+          <span>BTC</span>
           <input
             type='checkbox'
             label='Litecoin(LTC)'
             onChange={this.handleLTCChange}
           />
+          <span>LTC</span>
           <input
             type='checkbox'
             label='Monero(XMR)'
             onChange={this.handleXMRChange}
           />
+          <span>XMR</span>
           <input
             type='checkbox'
             label='Ethereum(ETH)'
             onChange={this.handleETHChange}
           />
+          <span>ETH</span>
         </div>
         <div className='cards'>
-          {this.state.BTCChecked === true ? (
+          {this.state.BTCChecked ? (
             <CryptoCard name='Bitcoin' symbol='BTC' />
           ) : null}
 

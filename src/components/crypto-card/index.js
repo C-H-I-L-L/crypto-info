@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-fetch';
 
-import './styles.css';
+import './card-styles.css';
 
 class CryptoCard extends Component {
   constructor(props) {

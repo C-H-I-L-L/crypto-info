@@ -7,6 +7,8 @@
   border-radius: 4px;
   width: 200px;
   height: 100px;
+  margin: 0px 2px 2px 0px;
+  background-color: beige;
 }
 
 .card.gain {
@@ -29,6 +31,7 @@
 
 .card .percentage {
   font-size: 0.9em;
+  padding-left: 0.5vw;
 }
 
 .card .percentage.gain,
@@ -39,4 +42,8 @@
 .card .percentage.loss,
 .card .price.loss {
   color: #e60000;
+}
+
+.card .price {
+  padding-left: 0.5vw;
 }

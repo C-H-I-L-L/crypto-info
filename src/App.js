@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Cards from './components/cards';
+import Cards from './components/crypto-card/cards';
 import Nav from './components/nav';
 
-import WhatIs from './components/whatIs';
-import AboutUs from './components/aboutUs';
-import CryptoHistories from './components/cryptoHistories';
+import WhatIs from './components/pages/whatIs';
+import AboutUs from './components/pages/about';
+import CryptoHistories from './components/pages/cryptoHistories';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
