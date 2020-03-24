@@ -22,7 +22,6 @@ class CryptoCard extends Component {
   }
 
   pollPrice() {
-    console.log('polling for new price');
     const { symbol } = this.state;
     fetch(
       `https://min-api.cryptocompare.com/data/price?fsym=${symbol}&tsyms=${symbol},USD`

@@ -43,7 +43,7 @@ class App extends Component {
 
   render() {
     return (
-      <div classname='content'>
+      <div className='content'>
         <div className='checkboxes'>
           <input type='checkbox' onChange={this.handleBTCChange} name='(BTC)' />
           <span>BTC</span>

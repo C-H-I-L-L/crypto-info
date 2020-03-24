@@ -14,6 +14,7 @@ export default class Nav extends Component {
         <Link to='/'>Home</Link>
         <Link to='about-us'>About us</Link>
         <Link to='histories'>History of Currencies</Link>
+        <Link to='chat'>Chat</Link>
       </div>
     );
   }
