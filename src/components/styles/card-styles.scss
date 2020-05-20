@@ -1,0 +1,68 @@
+$card-gain: black;
+$card-loss: #e60000;
+$card-color: #d705fb;
+
+span {
+  color: black;
+  letter-spacing: 1px;
+}
+.cards {
+  color: white;
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2px;
+  align-self: center;
+}
+
+.card {
+  border-radius: 4px;
+  width: 200px;
+  height: 100px;
+  margin: 0px 2px 2px 0px;
+  background-color: $card-color;
+}
+
+.card.gain {
+  border: 1px solid $card-gain;
+}
+
+.card.loss {
+  border: 1px solid $card-loss;
+}
+
+.card .name {
+  padding: 8px 12px;
+  font-weight: bold;
+}
+
+.card .name span {
+  margin: 0px 0px 0px 4px;
+  font-weight: normal;
+}
+
+.card .percentage {
+  font-size: 0.9em;
+  padding-left: 0.5vw;
+}
+
+// .card .percentage.gain,
+// .card .price.gain {
+//   color: $card-gain;
+// }
+
+// .card .percentage.loss,
+// .card .price.loss {
+//   color: $card-loss;
+// }
+
+.card .price {
+  padding-left: 0.5vw;
+}
+
+.card .percentage.gain,
+.card .percentage.loss {
+  .arrow {
+    margin-right: 5px;
+  }
+}

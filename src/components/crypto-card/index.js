@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-fetch';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
-import './card-styles.css';
+import '../styles/card-styles.scss';
 
 class CryptoCard extends Component {
   constructor(props) {
@@ -14,11 +16,12 @@ class CryptoCard extends Component {
     };
 
     this.pollPrice = this.pollPrice.bind(this);
+    this.whichArrow = this.whichArrow.bind(this);
   }
 
   componentDidMount() {
     this.pollPrice();
-    setInterval(this.pollPrice, 10000);
+    setInterval(this.pollPrice, 2500);
   }
 
   pollPrice() {
@@ -39,7 +42,19 @@ class CryptoCard extends Component {
   priceChange(lastPrice, price) {
     const diff = lastPrice - price;
     const change = diff / lastPrice;
-    return (change * 100).toFixed(3);
+    return lastPrice === null ? (
+      <div>Loading change...</div>
+    ) : (
+      (change * -100).toFixed(3) + '%'
+    );
+  }
+
+  whichArrow() {
+    return this.state.lastPrice > this.state.price ? (
+      <FontAwesomeIcon className='arrow' icon={faArrowDown} />
+    ) : (
+      <FontAwesomeIcon className='arrow' icon={faArrowUp} />
+    );
   }
 
   render() {
@@ -55,7 +70,8 @@ class CryptoCard extends Component {
           </div>
 
           <div className={`percentage ${gainloss}`}>
-            {this.priceChange(lastPrice, price)}%
+            {lastPrice === null ? null : this.whichArrow()}
+            {this.priceChange(lastPrice, price)}
           </div>
 
           <div className='logo'></div>

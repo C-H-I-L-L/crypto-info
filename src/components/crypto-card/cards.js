@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import CryptoCard from './index';
 
+import '../styles/card-styles.scss';
+
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      BTCChecked: false,
+      BTCChecked: true,
       LTCChecked: false,
       XMRChecked: false,
       ETHChecked: false
@@ -45,7 +47,12 @@ class App extends Component {
     return (
       <div className='content'>
         <div className='checkboxes'>
-          <input type='checkbox' onChange={this.handleBTCChange} name='(BTC)' />
+          <input
+            type='checkbox'
+            checked={this.state.BTCChecked}
+            onChange={this.handleBTCChange}
+            name='(BTC)'
+          />
           <span>BTC</span>
           <input
             type='checkbox'

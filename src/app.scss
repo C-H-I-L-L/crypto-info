@@ -1,0 +1,21 @@
+$background-color: white;
+
+.App {
+  /* display: flex; */
+  width: 100vw;
+  height: 1fit-content;
+  align-items: center;
+  background-color: $background-color;
+}
+
+.hero {
+  width: 100vw;
+  height: 40vh;
+}
+
+html {
+  margin: none;
+  font-family: 'Titillium Web', sans-serif;
+  width: 100vw;
+  margin: 0;
+}

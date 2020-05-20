@@ -3,22 +3,9 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import './components/styles/mainindex.css';
+import './components/styles/mainindex.scss';
 
 import { BrowserRouter } from 'react-router-dom';
-
-const firebase = require('firebase');
-require('firebase/firestore');
-
-firebase.initializeApp({
-  apiKey: 'AIzaSyDILOJpMVVlnEdmj86axiu7P8GnSgTGwyU',
-  authDomain: 'crypto-info-fafb8.firebaseapp.com',
-  databaseURL: 'https://crypto-info-fafb8.firebaseio.com',
-  projectId: 'crypto-info-fafb8',
-  storageBucket: 'crypto-info-fafb8.appspot.com',
-  messagingSenderId: '184555560179',
-  appId: '1:184555560179:web:624d15dbcc5a38478dab86'
-});
 
 ReactDOM.render(
   <BrowserRouter>
