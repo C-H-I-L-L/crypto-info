@@ -9,13 +9,13 @@ import News from './components/pages/news';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 
-import { faCircleNotch, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faCircleNotch, faFeatherAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './app.scss';
 
-library.add(faCircleNotch, faSpinner);
+library.add(faCircleNotch, faFeatherAlt);
 
 class App extends Component {
   constructor() {

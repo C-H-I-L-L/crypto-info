@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Moment from 'moment';
-
-import { database } from '../../firebase';
-import moment from 'moment';
+import axios from 'axios';
+import '../styles/blog-form.scss';
 
 export default class BlogForm extends Component {
   constructor(props) {
@@ -10,17 +8,44 @@ export default class BlogForm extends Component {
 
     this.state = {
       title: '',
-      body: '',
       blog_status: '',
-      timeStamp: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-    // this.handleSuccessfulFormSubmission = this.handleSuccessfulFormSubmission.bind(
-    //   this
-    // );
+  buildForm() {
+    let formData = new FormData();
+
+    formData.append('portfolio_blog[title]', this.state.title);
+    formData.append('portfolio_blog[blog_status]', this.state.blog_status);
+
+    return formData;
+  }
+
+  handleSubmit(event) {
+    axios
+      .post(
+        'https://wubbalubbadubbdubb.devcamp.space/portfolio/portfolio_blogs',
+        this.buildForm(),
+        { withCredentials: true }
+      )
+      .then((response) => {
+        this.props.handleSuccessfullFormSubmission(
+          response.data.portfolio_blog
+        );
+
+        this.setState({
+          title: '',
+          blog_status: '',
+        });
+      })
+      .catch((error) => {
+        console.log('handleSubmit for blog error', error);
+      });
+
+    event.preventDefault();
   }
 
   handleChange(event) {
@@ -29,52 +54,26 @@ export default class BlogForm extends Component {
     });
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    const post = {
-      title: this.state.title,
-      blog_status: this.state.blog_status,
-      body: this.state.body,
-      timeStamp: moment().unix(),
-      date: moment().format('LLL'),
-    };
-    console.log(post);
-    database.push(post);
-    this.props.handleSuccessfulFormSubmission(post);
-    this.setState({
-      title: '',
-      blog_status: '',
-      body: '',
-      timeStamp: '',
-      date: '',
-    });
-  }
-
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className='blog-form-wrapper' onSubmit={this.handleSubmit}>
         <input
           type='text'
-          placeholder='Blog Title'
+          onChange={this.handleChange}
           name='title'
+          placeholder='Blog Title'
           value={this.state.title}
-          onChange={this.handleChange}
-        ></input>
-        <input
-          type='text'
-          onChange={this.handleChange}
-          name='body'
-          placeholder='Body'
-          value={this.state.body}
-        ></input>
+        />
+
         <input
           type='text'
           onChange={this.handleChange}
           name='blog_status'
-          placeholder='Blog Status'
+          placeholder='Blog status'
           value={this.state.blog_status}
-        ></input>
-        <button>Submit!</button>
+        />
+
+        <button>Save</button>
       </form>
     );
   }

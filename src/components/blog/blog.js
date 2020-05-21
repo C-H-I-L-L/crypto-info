@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { database } from '../../firebase';
-import firebase from 'firebase';
 import _ from 'lodash';
 import BlogModal from '../modals/blog-modal';
 import BlogItem from './blog-item';
@@ -21,11 +19,6 @@ class Blog extends Component {
       blogItems: [],
       totalCount: 0,
       currentPage: 0,
-      title: '',
-      body: '',
-      posts: [],
-      timeStamp: '',
-      date: '',
       isLoading: true,
       blogModalIsOpen: false,
     };
@@ -42,6 +35,16 @@ class Blog extends Component {
     this.handleSuccessfulFormSubmission = this.handleSuccessfulFormSubmission.bind(
       this
     );
+    this.handleSuccessfulNewBlogSubmission = this.handleSuccessfulNewBlogSubmission.bind(
+      this
+    );
+  }
+
+  handleSuccessfulNewBlogSubmission(blog) {
+    this.setState({
+      blogModalIsOpen: false,
+      blogItems: [blog].concat(this.state.blogItems),
+    });
   }
 
   getBlogItems() {
@@ -91,14 +94,6 @@ class Blog extends Component {
     }
   }
 
-  componentDidMount() {
-    database.on('value', (snapshot) => {
-      this.setState({
-        posts: snapshot.val(),
-      });
-    });
-  }
-
   handleNewBlogClick() {
     this.setState({
       blogModalIsOpen: true,
@@ -128,13 +123,25 @@ class Blog extends Component {
 
     return (
       <div className='blog-container'>
-        <BlogModal modalIsOpen={this.state.blogModalIsOpen} />
-        <a onClick={this.handleNewBlogClick}>Open Modal!</a>
+        <BlogModal
+          modalIsOpen={this.state.blogModalIsOpen}
+          handleModalClose={this.handleModalClose}
+          handleSuccessfulNewBlogSubmission={
+            this.handleSuccessfulNewBlogSubmission
+          }
+        />
+        <div className='new-blog-link'>
+          <a onClick={this.handleNewBlogClick}>
+            <FontAwesomeIcon icon='feather-alt' />
+          </a>
+        </div>
+
         <div className='content-loader'>
           {this.state.isLoading ? (
             <FontAwesomeIcon icon='circle-notch' spin />
           ) : null}
         </div>
+
         <div className='content-container'>{blogRecords}</div>
         {/* <BlogModal
           handleModalClose={this.handleModalClose}

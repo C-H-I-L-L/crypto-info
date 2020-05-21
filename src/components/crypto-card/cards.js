@@ -11,31 +11,31 @@ class App extends Component {
       BTCChecked: true,
       LTCChecked: false,
       XMRChecked: false,
-      ETHChecked: false
+      ETHChecked: false,
     };
   }
 
   handleBTCChange = () => {
-    this.setState(prevState => ({
-      BTCChecked: !prevState.BTCChecked
+    this.setState((prevState) => ({
+      BTCChecked: !prevState.BTCChecked,
     }));
   };
 
   handleLTCChange = () => {
-    this.setState(prevState => ({
-      LTCChecked: !prevState.LTCChecked
+    this.setState((prevState) => ({
+      LTCChecked: !prevState.LTCChecked,
     }));
   };
 
   handleXMRChange = () => {
-    this.setState(prevState => ({
-      XMRChecked: !prevState.XMRChecked
+    this.setState((prevState) => ({
+      XMRChecked: !prevState.XMRChecked,
     }));
   };
 
   handleETHChange = () => {
-    this.setState(prevState => ({
-      ETHChecked: !prevState.ETHChecked
+    this.setState((prevState) => ({
+      ETHChecked: !prevState.ETHChecked,
     }));
   };
 

@@ -1,0 +1,37 @@
+@mixin base-grid() {
+  display: grid;
+  grid-gap: 21px;
+}
+
+@mixin input-element {
+  input {
+    font-family: 'Titillium Web', sans-serif;
+    color: grey;
+    padding: 5px 0px;
+    width: 100%;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 1px solid #7a008f;
+    background-color: transparent;
+    transition: 0.5s all ease-in-out;
+    font-size: 1.1em;
+    margin-bottom: 21px;
+
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid #7a008f75;
+    }
+  }
+}
+
+.blog-form-wrapper {
+  @include base-grid();
+  grid-template-columns: 1fr;
+  padding: 42px;
+
+  @include input-element();
+  input {
+    margin-bottom: 0px;
+  }
+}
