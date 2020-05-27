@@ -48,6 +48,7 @@ export default class BlogDetail extends Component {
           <div className='content'>
             <div>{content}</div>
           </div>
+          <div className='status'>{blog_status}</div>
         </div>
       </div>
     );

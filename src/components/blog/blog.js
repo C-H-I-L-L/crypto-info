@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 import BlogModal from '../modals/blog-modal';
 import BlogItem from './blog-item';
 import axios from 'axios';

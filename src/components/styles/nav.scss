@@ -5,13 +5,14 @@ $link-text-color: white;
 .navbar {
   position: fixed;
   display: flex;
-
+  width: cover;
   justify-content: space-between;
   padding-left: 0vw;
   padding-right: 10vw;
   background-color: $navbar-color;
   height: 70px;
   align-items: center;
+  // left: 0px;
   right: 0px;
   box-shadow: 0px 1px 7px 3px rgba(0, 0, 0, 0.5);
 }
