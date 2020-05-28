@@ -25,22 +25,19 @@ export default class App extends Component {
     this.state = {
       loggedInStatus: 'NOT_LOGGED_IN',
     };
-
-    this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
-    this.handleUnsuccessfulLogin = this.handleUnsuccessfulLogin.bind(this);
   }
 
-  handleSuccessfulLogin() {
+  handleSuccessfulAuth = () => {
     this.setState({
       loggedInStatus: 'LOGGED_IN',
     });
-  }
+  };
 
-  handleUnsuccessfulLogin() {
+  handleUnsuccessfulAuth = () => {
     this.setState({
       loggedInStatus: 'NOT_LOGGED_IN',
     });
-  }
+  };
 
   checkLoginStatus() {
     return axios
@@ -82,37 +79,34 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className='container'>
-        <Router>
-          <div>
-            <Nav loggedInStatus={this.state.loggedInStatus} />
+      <Router>
+        <Nav loggedInStatus={this.state.loggedInStatus} />
+        <div className='container'>
+          <h2>{this.state.loggedInStatus}</h2>
 
-            <h2>{this.state.loggedInStatus}</h2>
+          <Cards />
 
-            <Cards />
+          <Switch>
+            <Route
+              path='/login'
+              render={(props) => (
+                <Auth
+                  {...props}
+                  handleSuccessfulAuth={this.handleSuccessfulAuth}
+                  handleUnsuccessfulAuth={this.handleUnsuccessfulAuth}
+                />
+              )}
+            />
 
-            <Switch>
-              <Route
-                path='/login'
-                render={(props) => (
-                  <Auth
-                    {...props}
-                    handleSuccessfulLogin={this.handleSuccessfulLogin}
-                    handleUnsuccessfulLogin={this.handleUnsuccessfulLogin}
-                  />
-                )}
-              />
-
-              <Route path='/' component={Blog} />
-              <Route exact path='/b/:slug' component={BlogDetail} />
-              <Route path='/news' component={News} />
-              {this.state.loggedInStatus === 'LOGGED_IN'
-                ? this.authorizedRoutes()
-                : null}
-            </Switch>
-          </div>
-        </Router>
-      </div>
+            <Route exact path='/b/:slug' component={BlogDetail} />
+            <Route path='/news' component={News} />
+            {this.state.loggedInStatus === 'LOGGED_IN'
+              ? this.authorizedRoutes()
+              : null}
+            <Route path='/' component={Blog} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

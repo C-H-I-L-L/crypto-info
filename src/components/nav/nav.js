@@ -7,11 +7,7 @@ import whereToBuy from '../pages/wheretobuy';
 
 const Nav = (props) => {
   const dynamicLink = (route, linkText) => {
-    return (
-      <Link to='/where-to-buy' component={whereToBuy}>
-        Buy Crypto
-      </Link>
-    );
+    return <Link to='/where-to-buy'>Buy Crypto</Link>;
   };
 
   return (
