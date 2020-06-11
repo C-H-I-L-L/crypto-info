@@ -1,13 +1,31 @@
 import React, { Component } from 'react';
 import '../styles/nav.scss';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { withRouter } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Logo from '../../resources/images/crypto-logo.png';
-import whereToBuy from '../pages/wheretobuy';
+import WhereToBuy from '../pages/wheretobuy';
 
 const Nav = (props) => {
   const dynamicLink = (route, linkText) => {
     return <Link to='/where-to-buy'>Buy Crypto</Link>;
+  };
+
+  const handleSignOut = () => {
+    axios
+      .delete('https://api.devcamp.space/logout', { withCredentials: true })
+      .then((response) => {
+        if (response.status === 200) {
+          props.history.push('/');
+          props.handleSuccessfulLogout();
+        }
+        return response.data;
+      })
+      .catch((error) => {
+        console.log('error signing out', error);
+      });
   };
 
   return (
@@ -20,8 +38,15 @@ const Nav = (props) => {
       {props.loggedInStatus === 'LOGGED_IN'
         ? dynamicLink('/where-to-buy', 'wheretobuy')
         : null}
+      {props.loggedInStatus === 'LOGGED_IN' ? (
+        <FontAwesomeIcon
+          onClick={handleSignOut}
+          icon='sign-out-alt'
+          cursor='pointer'
+        />
+      ) : null}
     </div>
   );
 };
 
-export default Nav;
+export default withRouter(Nav);

@@ -1,13 +1,15 @@
 .content {
-  .checkboxes {
-    color: red;
+  display: flex;
+  width: 100vw;
+  background-color: black;
+  npm .checkboxes {
+    padding-left: 5em;
   }
 }
 
 .cards {
-  padding-top: 50px;
+  padding-top: 700px;
   display: flex;
-  flex-direction: row;
 }
 
 .card {
@@ -15,7 +17,6 @@
   width: 200px;
   height: 100px;
   margin: 0px 2px 2px 0px;
-  background-color: beige;
 }
 
 .card.gain {

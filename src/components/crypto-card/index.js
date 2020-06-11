@@ -12,7 +12,7 @@ class CryptoCard extends Component {
       name: props.name,
       symbol: props.symbol,
       price: null,
-      lastPrice: null
+      lastPrice: null,
     };
 
     this.pollPrice = this.pollPrice.bind(this);
@@ -29,12 +29,14 @@ class CryptoCard extends Component {
     fetch(
       `https://min-api.cryptocompare.com/data/price?fsym=${symbol}&tsyms=${symbol},USD`
     )
-      .then(resp => resp.json())
-      .then(json => {
-        this.setState(prevState => ({
+      .then((resp) => resp.json())
+      .then((json) => {
+        this.setState((prevState) => ({
           price: json.USD,
           lastPrice:
-            prevState.price !== json.USD ? prevState.price : prevState.lastPrice
+            prevState.price !== json.USD
+              ? prevState.price
+              : prevState.lastPrice,
         }));
       });
   }
@@ -43,7 +45,10 @@ class CryptoCard extends Component {
     const diff = lastPrice - price;
     const change = diff / lastPrice;
     return lastPrice === null ? (
-      <div>Loading change...</div>
+      <div>
+        <FontAwesomeIcon icon='circle-notch' spin />
+        &nbsp;&nbsp; last 10s-change...
+      </div>
     ) : (
       (change * -100).toFixed(3) + '%'
     );
@@ -76,7 +81,9 @@ class CryptoCard extends Component {
 
           <div className='logo'></div>
 
-          <div className={`price ${gainloss}`}>{price}</div>
+          <div className={`price ${gainloss}`}>
+            <strong>${price}</strong>
+          </div>
         </div>
       </div>
     );

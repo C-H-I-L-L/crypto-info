@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import CryptoCard from './index';
 
-import '../styles/card-styles.scss';
-
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
       BTCChecked: true,
-      LTCChecked: false,
-      XMRChecked: false,
-      ETHChecked: false,
+      LTCChecked: true,
+      XMRChecked: true,
+      ETHChecked: true,
     };
   }
 
@@ -39,14 +37,10 @@ class App extends Component {
     }));
   };
 
-  componentDidMount() {
-    this.setState({ BTCChecked: true });
-  }
-
   render() {
     return (
       <div className='content'>
-        <div className='checkboxes'>
+        {/* <div className='checkboxes'>
           <input
             type='checkbox'
             checked={this.state.BTCChecked}
@@ -72,7 +66,7 @@ class App extends Component {
             onChange={this.handleETHChange}
           />
           <span>ETH</span>
-        </div>
+        </div> */}
         <div className='cards'>
           {this.state.BTCChecked ? (
             <CryptoCard name='Bitcoin' symbol='BTC' />

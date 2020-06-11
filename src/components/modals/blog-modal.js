@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 
+import '../styles/modal.scss';
+
 import BlogForm from '../blog/blog-form';
 
 ReactModal.setAppElement('#root');

@@ -22,31 +22,17 @@ class Blog extends Component {
       blogModalIsOpen: false,
     };
 
-    this.onHandleChange = this.onHandleChange.bind(this);
-    // this.onHandleSubmit = this.onHandleSubmit.bind(this);
-
-    this.handleNewBlogClick = this.handleNewBlogClick.bind(this);
-    this.getBlogItems = this.getBlogItems.bind(this);
-    this.onScroll = this.onScroll.bind(this);
     window.addEventListener('scroll', this.onScroll, false);
-
-    this.handleModalClose = this.handleModalClose.bind(this);
-    this.handleSuccessfulFormSubmission = this.handleSuccessfulFormSubmission.bind(
-      this
-    );
-    this.handleSuccessfulNewBlogSubmission = this.handleSuccessfulNewBlogSubmission.bind(
-      this
-    );
   }
 
-  handleSuccessfulNewBlogSubmission(blog) {
+  handleSuccessfulNewBlogSubmission = (blog) => {
     this.setState({
       blogModalIsOpen: false,
       blogItems: [blog].concat(this.state.blogItems),
     });
-  }
+  };
 
-  getBlogItems() {
+  getBlogItems = () => {
     this.setState({
       currentPage: this.state.currentPage + 1,
     });
@@ -68,17 +54,17 @@ class Blog extends Component {
       .catch((error) => {
         console.log('getBlogItems error', error);
       });
-  }
+  };
 
   componentWillMount() {
     this.getBlogItems();
   }
 
-  componentWillUnmount() {
+  componentWillUnmount = () => {
     window.removeEventListener('scroll', this.onScroll, false);
-  }
+  };
 
-  onScroll() {
+  onScroll = () => {
     if (
       this.state.isLoading ||
       this.state.blogItems.length === this.state.totalCount
@@ -91,31 +77,31 @@ class Blog extends Component {
     ) {
       this.getBlogItems();
     }
-  }
+  };
 
-  handleNewBlogClick() {
+  handleNewBlogClick = () => {
     this.setState({
       blogModalIsOpen: true,
     });
-  }
+  };
 
-  handleModalClose() {
+  handleModalClose = () => {
     this.setState({
       blogModalIsOpen: false,
     });
-  }
+  };
 
-  handleSuccessfulFormSubmission() {
+  handleSuccessfulFormSubmission = () => {
     this.setState({
       blogModalIsOpen: false,
     });
-  }
+  };
 
-  onHandleChange() {
+  onHandleChange = () => {
     console.log('sure');
-  }
+  };
 
-  render() {
+  render = () => {
     const blogRecords = this.state.blogItems.map((blogItem) => {
       return <BlogItem key={blogItem.id} blogItem={blogItem} />;
     });
@@ -129,11 +115,14 @@ class Blog extends Component {
             this.handleSuccessfulNewBlogSubmission
           }
         />
-        <div className='new-blog-link'>
-          <a onClick={this.handleNewBlogClick}>
-            <FontAwesomeIcon icon='feather-alt' />
-          </a>
-        </div>
+
+        {this.props.loggedInStatus === 'LOGGED_IN' ? (
+          <div className='new-blog-link'>
+            <a onClick={this.handleNewBlogClick}>
+              <FontAwesomeIcon icon='feather-alt' />
+            </a>
+          </div>
+        ) : null}
 
         <div className='content-loader'>
           {this.state.isLoading ? (
@@ -154,7 +143,7 @@ class Blog extends Component {
         <div className='posts'>{this.renderPosts()}</div> */}
       </div>
     );
-  }
+  };
 }
 
 export default Blog;

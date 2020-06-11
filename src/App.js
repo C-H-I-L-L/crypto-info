@@ -9,18 +9,17 @@ import News from './components/pages/news';
 import Auth from './components/auth/login';
 import axios from 'axios';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCircleNotch, faFeatherAlt } from '@fortawesome/free-solid-svg-icons';
-
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import './app.scss';
+import './components/styles/main.scss';
 
-library.add(faCircleNotch, faFeatherAlt);
+import Icons from './components/helpers/icons';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
+
+    Icons();
 
     this.state = {
       loggedInStatus: 'NOT_LOGGED_IN',
@@ -34,6 +33,12 @@ export default class App extends Component {
   };
 
   handleUnsuccessfulAuth = () => {
+    this.setState({
+      loggedInStatus: 'NOT_LOGGED_IN',
+    });
+  };
+
+  handleSuccessfulLogout = () => {
     this.setState({
       loggedInStatus: 'NOT_LOGGED_IN',
     });
@@ -80,9 +85,13 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <Nav loggedInStatus={this.state.loggedInStatus} />
+        <Nav
+          loggedInStatus={this.state.loggedInStatus}
+          handleSuccessfulLogout={this.handleSuccessfulLogout}
+        />
+
         <div className='container'>
-          <h2>{this.state.loggedInStatus}</h2>
+          {/* <h2>{this.state.loggedInStatus}</h2> */}
 
           <Cards />
 
@@ -99,11 +108,17 @@ export default class App extends Component {
             />
 
             <Route exact path='/b/:slug' component={BlogDetail} />
+
             <Route path='/news' component={News} />
             {this.state.loggedInStatus === 'LOGGED_IN'
               ? this.authorizedRoutes()
               : null}
-            <Route path='/' component={Blog} />
+            <Route
+              path='/'
+              render={(props) => (
+                <Blog {...props} loggedInStatus={this.state.loggedInStatus} />
+              )}
+            />
           </Switch>
         </div>
       </Router>

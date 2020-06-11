@@ -5,19 +5,15 @@ import auth from '../../resources/images/Login.jpg';
 export default class Auth extends Component {
   constructor(props) {
     super(props);
-
-    this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
-    this.handleUnsuccessfulAuth = this.handleUnsuccessfulAuth.bind(this);
   }
 
-  handleSuccessfulAuth() {
-    this.props.handleSuccessfulLogin();
+  handleSuccessfulAuth = () => {
     this.props.history.push('/');
-  }
+  };
 
-  handleUnsuccessfulAuth() {
+  handleUnsuccessfulAuth = () => {
     this.props.handleUnsuccessfulLogin();
-  }
+  };
 
   render() {
     return (
@@ -25,7 +21,7 @@ export default class Auth extends Component {
         <div
           className='left-column'
           style={{
-            backgroundImage: `url(${auth})`,
+            backgroundImage: { auth },
           }}
         />
 

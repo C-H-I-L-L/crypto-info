@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ReactHtmlParser from 'react-html-parser';
+
+import BlogFeaturedImage from '../blog/blog-featured-image';
+import BlogForm from '../blog/blog-form';
 
 export default class BlogDetail extends Component {
   constructor(props) {
@@ -8,11 +12,29 @@ export default class BlogDetail extends Component {
     this.state = {
       currentId: this.props.match.params.slug,
       blogItem: {},
+      editMode: false,
+      id: '',
     };
   }
 
+  handleEditClick = () => {
+    this.setState({
+      editMode: true,
+    });
+  };
+
   componentDidMount() {
     this.getBlogItem();
+  }
+
+  componentWillMout() {
+    if (this.props.editMode) {
+      this.setState({
+        id: this.props.blog.id,
+        title: this.props.blog.title,
+        status: this.props.blog.status,
+      });
+    }
   }
 
   getBlogItem() {
@@ -38,19 +60,27 @@ export default class BlogDetail extends Component {
       blog_status,
     } = this.state.blogItem;
 
-    return (
-      <div className='blog-container'>
-        <div className='content-container'>
-          <h1>{title}</h1>
-          <div className='featured-image-wrapper'>
-            <img src={featured_image_url} />
+    const contentManager = () => {
+      if (this.state.editMode) {
+        return (
+          <BlogForm editMode={this.state.editMode} blog={this.state.blogItem} />
+        );
+      } else {
+        return (
+          <div className='content-container'>
+            <h1 onClick={this.handleEditClick}>{title}</h1>
+
+            <BlogFeaturedImage img={featured_image_url} />
+
+            <div className='content'>
+              <div>{ReactHtmlParser(content)}</div>
+            </div>
+            <div className='status'>{blog_status}</div>
           </div>
-          <div className='content'>
-            <div>{content}</div>
-          </div>
-          <div className='status'>{blog_status}</div>
-        </div>
-      </div>
-    );
+        );
+      }
+    };
+
+    return <div className='blog-container'>{contentManager()}</div>;
   }
 }
