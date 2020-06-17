@@ -1,0 +1,11 @@
+Build/style buy crypto page
+tweak nav button styles
+tweak logo colors
+make the whole thing mobile-friendly
+style submit button in blog form
+
+
+BUGS:
+
+part of the rich text editor (in edit mode) is overlapping the nav
+bar when scrolling up
