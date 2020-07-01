@@ -6,7 +6,6 @@ $font-color: black;
 
 .news-map-container {
   width: 100vw;
-  text-decoration: none !important;
 
   .left {
     color: $font-color;
@@ -14,6 +13,7 @@ $font-color: black;
 }
 
 .news-map-container > .news-card {
+  text-decoration: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,6 +22,7 @@ $font-color: black;
   margin: 20px 10px;
   box-shadow: 2px 2px 4px 2px $card-box-shadow;
   width: 97vw;
+  height: 30vh;
 }
 
 .news-map-container > .news-card > .top {
@@ -52,7 +53,7 @@ $font-color: black;
 
 .news-map-container img {
   width: 20vw;
-  height: 20vh;
+  height: 27vh;
   border: 5px solid $card-img-border;
   margin: 5px 5px 0px 0px;
 }

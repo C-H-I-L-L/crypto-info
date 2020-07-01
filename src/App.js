@@ -91,8 +91,6 @@ export default class App extends Component {
         />
 
         <div className='container'>
-          {/* <h2>{this.state.loggedInStatus}</h2> */}
-
           <Cards />
 
           <Switch>

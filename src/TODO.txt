@@ -3,7 +3,9 @@ tweak nav button styles
 tweak logo colors
 make the whole thing mobile-friendly
 style submit button in blog form
+implement reach router
 
+implement context? maybe?
 
 BUGS:
 
