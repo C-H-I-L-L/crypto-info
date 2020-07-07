@@ -1,8 +1,12 @@
 .blog-detail-container {
   display: flex;
   .share-icons {
+    position: fixed;
     left: 0;
     bottom: 0;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
   }
   .blog-post {
   }
