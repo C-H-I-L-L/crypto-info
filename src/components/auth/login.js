@@ -10,19 +10,16 @@ export default class Login extends Component {
       password: '',
       errorText: '',
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
       errorText: '',
     });
-  }
+  };
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     axios
       .post(
         'https://api.devcamp.space/sessions',
@@ -36,7 +33,7 @@ export default class Login extends Component {
       )
       .then((response) => {
         if (response.data.status === 'created') {
-          this.props.handleSuccessfulAuth();
+          this.props.history.push('/');
         } else {
           this.setState({
             errorText: 'Wrong email or password',
@@ -52,7 +49,7 @@ export default class Login extends Component {
       });
 
     event.preventDefault();
-  }
+  };
 
   render() {
     return (

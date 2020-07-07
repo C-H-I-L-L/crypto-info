@@ -1,36 +1,47 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import BTC from '../../resources/images/bitcoinwallpaper.jpg';
+import article1 from '../../resources/images/article1.png';
 
 export default function whereToBuy() {
   return (
-    <div>
-      <p>
-        <h1>How and Where To Buy Cryptocurrency?</h1>{' '}
-        <h6>
-          Overview An overview of different ways to buy cryptocurrency these
-          days.
-        </h6>
+    <div className='buying-container'>
+      <div className='buying-content'>
+        <div className='heading'>
+          <h1>How and Where To Buy Cryptocurrency?</h1>
+          <p>
+            Overview An overview of different ways to buy cryptocurrency these
+            days.
+          </p>
+          <img className='article-main' src={BTC} />
+        </div>
         {/* BTC picture goes here */}
-        <h6>
+        <p>
           This article does not contain investment advice or recommendations.
           Every investment and trading move involves risk, you should conduct
           your own research when making a decision.
-        </h6>
-        <p>
-          Despite the recent news about banks closing their doors on credit card
-          purchases of crypto; one after the other, there are still available
-          options you can use to buy crypto. Let’s see what they are. The
-          easiest way is to buy cryptocurrency with a debit card on a
-          centralized exchange. It really is as easy as buying clothes on
-          Amazon. Coinbase, for example, is a popular interface to buy crypto
-          with fiat (fiat = paper currency like dollars or euro). On Coinbase,
-          users need to create an account and verify identity. After that, they
-          can buy with their debit card.
         </p>
-        <h2 className='quote'>
-          Rules for verifying identity differ for each exchange/country;
-          generally, users need to at least provide an ID/Passport and enable
-          2-factor authentication.
-        </h2>
+        <p>
+          Despite banks closing their doors on credit card purchases of crypto;
+          one after the other, there are still available options you can use to
+          buy crypto. Let’s see what they are. The easiest way is to buy
+          cryptocurrency with a debit card on a centralized exchange. It really
+          is as easy as buying clothes on Amazon. Coinbase, for example, is a
+          popular interface to buy crypto with fiat (fiat = paper currency like
+          dollars or euro). On <a className='links'>Coinbase</a>, users need to
+          create an account and verify identity. After that, they can buy with
+          their debit card.
+        </p>
+        <div className='quote'>
+          <FontAwesomeIcon icon='quote-left' />
+          <h3>
+            Rules for verifying identity differ for each exchange/country;
+            generally, users need to at least provide an ID/Passport and enable
+            2-factor authentication.
+          </h3>
+          <FontAwesomeIcon icon='quote-right' />
+        </div>
         <p>
           Coinbase also has a sister company named GDAX - this type of platform
           gives users a better idea of how crypto exchanges really work. It
@@ -40,10 +51,13 @@ export default function whereToBuy() {
           This exchange follows US regulations, bringing it to compliance in
           USA, Canada, Europe, the UK, Australia, and Singapore.
         </p>
-        {/* 1st article image */}
-        Image: Buybitcoinworldwide Image:
+        <img
+          src={article1}
+          alt='Image: Buybitcoinworldwide'
+          className='article-image'
+        />
         <p>
-          Buybitcoinworldwide Bitfinex is another very popular exchange that has
+          <strong>Bitfinex</strong> is another very popular exchange that has
           been around as early as 2012. Its website boasts being the “most
           advanced cryptocurrency trading platform” in the world, with many
           advanced charting tools to equip while trading. The website even has
@@ -56,11 +70,11 @@ export default function whereToBuy() {
         </p>
         {/* 2nd image */}
         While there are many more places to buy cryptocurrency with fiat,
-        Robinhood is unique in its zero-fee approach and their goals to be an
-        even easier platform to buy cryptocurrency. This exchange/trading app
-        hybrid lets users buy Bitcoin and Ethereum right from their phone with
-        no trading fee. Compare this to Coinbase’s 1.49%-3.99% fees added to
-        every purchase.
+        <strong>Robinhood</strong> is unique in its zero-fee approach and their
+        goals to be an even easier platform to buy cryptocurrency. This
+        exchange/trading app hybrid lets users buy Bitcoin and Ethereum right
+        from their phone with no trading fee. Compare this to Coinbase’s
+        1.49%-3.99% fees added to every purchase.
         {/* find robinhood picture */}
         <h2>Not all cryptocurrencies can be bought with fiat</h2>
         <p>
@@ -140,7 +154,7 @@ export default function whereToBuy() {
         be focusing on getting their product out on the web and involving the
         existing crypto community. But for now, and forever, it’s a good time to
         buy crypto.
-      </p>
+      </div>
     </div>
   );
 }

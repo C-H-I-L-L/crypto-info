@@ -4,6 +4,7 @@ import ReactHtmlParser from 'react-html-parser';
 
 import BlogFeaturedImage from '../blog/blog-featured-image';
 import BlogForm from '../blog/blog-form';
+import Share from '../helpers/share';
 
 export default class BlogDetail extends Component {
   constructor(props) {
@@ -78,15 +79,20 @@ export default class BlogDetail extends Component {
         );
       } else {
         return (
-          <div className='content-container'>
-            <h1 onClick={this.handleEditClick}>{title}</h1>
-
-            <BlogFeaturedImage img={featured_image_url} />
-
-            <div className='content'>
-              <div>{ReactHtmlParser(content)}</div>
+          <div className='blog-detail-container'>
+            <div className='share-icons'>
+              <Share />
             </div>
-            <div className='status'>{blog_status}</div>
+            <div className='blog-post'>
+              <h1 onClick={this.handleEditClick}>{title}</h1>
+
+              <BlogFeaturedImage img={featured_image_url} />
+
+              <div className='content'>
+                <div>{ReactHtmlParser(content)}</div>
+              </div>
+              <div className='status'>{blog_status}</div>
+            </div>
           </div>
         );
       }

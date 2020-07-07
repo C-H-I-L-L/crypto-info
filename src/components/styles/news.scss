@@ -6,6 +6,9 @@ $font-color: black;
 
 .news-map-container {
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
 
   .left {
     color: $font-color;
@@ -21,8 +24,10 @@ $font-color: black;
   border-radius: 5px;
   margin: 20px 10px;
   box-shadow: 2px 2px 4px 2px $card-box-shadow;
-  width: 97vw;
+  width: 80vw;
   height: 30vh;
+  right: 0;
+  left: 0;
 }
 
 .news-map-container > .news-card > .top {

@@ -35,14 +35,16 @@ const Nav = (props) => {
       </div>
       <Link to='/'>Home</Link>
       <Link to='/news'>News</Link>
-      {props.loggedInStatus === 'LOGGED_IN'
+      {/* {props.loggedInStatus === 'LOGGED_IN'
         ? dynamicLink('/where-to-buy', 'wheretobuy')
-        : null}
+        : null} */}
+      <Link to='/where-to-buy'>Buy</Link>
       {props.loggedInStatus === 'LOGGED_IN' ? (
         <FontAwesomeIcon
           onClick={handleSignOut}
           icon='sign-out-alt'
           cursor='pointer'
+          className='sign-out'
         />
       ) : null}
     </div>

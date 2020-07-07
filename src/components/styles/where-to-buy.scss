@@ -1,0 +1,36 @@
+.buying-container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+
+  .buying-content {
+    display: flex;
+    width: 75vw;
+    flex-direction: column;
+
+    .article-main {
+      width: 60vw;
+      height: 45vh;
+    }
+
+    .heading {
+      text-align: center;
+    }
+
+    .quote {
+      transform: translateX(20px);
+      display: flex;
+      flex-direction: column;
+      margin: 20px 0px;
+
+      h3 {
+        transform: translateX(20px);
+      }
+    }
+    .article-image {
+      img {
+        width: 20vw;
+      }
+    }
+  }
+}

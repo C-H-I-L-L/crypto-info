@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import BlogModal from '../modals/blog-modal';
 import BlogItem from './blog-item';
 import axios from 'axios';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import '../styles/blog.scss';

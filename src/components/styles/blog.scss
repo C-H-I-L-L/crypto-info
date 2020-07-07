@@ -17,18 +17,6 @@ $button-color: #00a3ab;
   align-content: center;
   position: relative;
 
-  .admin-blog-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    a {
-      cursor: pointer;
-      margin-left: 15px;
-      transform: translateY(-5px);
-    }
-  }
-
   .new-blog-link {
     position: fixed;
     right: 0;

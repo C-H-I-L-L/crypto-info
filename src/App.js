@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import Cards from './components/crypto-card/cards';
 import Nav from './components/nav/nav';
-
 import Blog from './components/blog/blog';
 import BlogDetail from './components/pages/blog-detail';
 import WhereToBuy from './components/pages/wheretobuy';
 import News from './components/pages/news';
 import Auth from './components/auth/login';
-import axios from 'axios';
 
+import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './components/styles/main.scss';
@@ -117,9 +116,12 @@ export default class App extends Component {
             />
 
             <Route path='/news' component={News} />
-            {this.state.loggedInStatus === 'LOGGED_IN'
+
+            {/* {this.state.loggedInStatus === 'LOGGED_IN'
               ? this.authorizedRoutes()
-              : null}
+              : null} */}
+
+            <Route path='/where-to-buy' component={WhereToBuy} />
             <Route
               path='/'
               render={(props) => (
