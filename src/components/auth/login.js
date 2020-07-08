@@ -33,6 +33,9 @@ export default class Login extends Component {
       )
       .then((response) => {
         if (response.data.status === 'created') {
+          //
+          // bug is ocurring here - the logout button and admin priveleges don't appear
+          //
           this.props.history.push('/');
         } else {
           this.setState({

@@ -6,13 +6,12 @@ import BlogDetail from './components/pages/blog-detail';
 import WhereToBuy from './components/pages/wheretobuy';
 import News from './components/pages/news';
 import Auth from './components/auth/login';
+import Icons from './components/helpers/icons';
 
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './components/styles/main.scss';
-
-import Icons from './components/helpers/icons';
 
 export default class App extends Component {
   constructor(props) {

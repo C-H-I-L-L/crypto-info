@@ -7,6 +7,9 @@ import {
   faTrash,
   faQuoteLeft,
   faQuoteRight,
+  faHome,
+  faNewspaper,
+  faMoneyBillWave,
 } from '@fortawesome/free-solid-svg-icons';
 
 const Icons = () => {
@@ -16,7 +19,10 @@ const Icons = () => {
     faSignOutAlt,
     faTrash,
     faQuoteLeft,
-    faQuoteRight
+    faQuoteRight,
+    faHome,
+    faNewspaper,
+    faMoneyBillWave
   );
 };
 

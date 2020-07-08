@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import '../styles/news.scss';
 
@@ -8,7 +9,7 @@ export default class News extends Component {
 
     this.state = {
       articles: [],
-      loading: true,
+      isLoading: true,
     };
   }
 
@@ -22,13 +23,22 @@ export default class News extends Component {
       })
       .then((myJson) => {
         this.setState({ articles: myJson.articles });
-      })
-      .then(this.setState({ loading: false }));
+      });
+    // .then(this.setState({ isLoading: false }));
   }
+
+  loaderOff = () => {
+    this.setState({ isLoading: false });
+  };
 
   render() {
     return (
       <>
+        <div className='content-loader'>
+          {this.state.isLoading ? (
+            <FontAwesomeIcon icon='circle-notch' spin />
+          ) : null}
+        </div>
         <div className='news-map-container'>
           {this.state.articles.map((item, index) => {
             return (
@@ -51,6 +61,7 @@ export default class News extends Component {
             );
           })}
         </div>
+        {this.loaderOff}
       </>
     );
   }

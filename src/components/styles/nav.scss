@@ -10,31 +10,38 @@ $link-text-color: white;
   padding-left: 0vw;
   padding-right: 10vw;
   background-color: $navbar-color;
-  height: 70px;
+  height: 80px;
   align-items: center;
   left: 0px;
   right: 0px;
-  box-shadow: 0px 1px 2px 3px rgba(255, 255, 255, 0.75);
+  box-shadow: 0px 1px 2px 3px #0091ab;
   z-index: 10;
+  overflow: hidden;
 }
 
 .navbar a {
   text-decoration: none;
-  background-color: $link-padding-color;
-  color: $link-text-color;
+  // background-color: $link-padding-color;
+  color: #0091ab;
   font-style: oblique 10deg;
   // padding: 3px 3px 3px 10px;
-  border-radius: 5px;
-  width: 10%;
+  border-radius: 15px;
+  width: 67px;
+  height: 67px;
   display: flex;
   justify-content: center;
+  font-size: 22px;
+  margin-top: 20px;
+  flex-grow: 2;
+  position: relative;
 }
 
 .navbar a:hover {
   transition: 0.75s;
-  padding: 10px;
+  padding: 7px;
   color: white;
-  box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.25);
+  position: relative;
+  // box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.25);
 }
 
 .navbar .logo img {
@@ -45,4 +52,11 @@ $link-text-color: white;
 
 .sign-out {
   color: #0091ab;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
 }

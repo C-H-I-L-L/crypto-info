@@ -11,25 +11,31 @@ span {
   font-size: 1.1rem;
   display: flex;
   flex-direction: row;
-  margin-top: 3px;
-  margin-bottom: 2px;
+  margin: 3px 0px 0px 0px;
+  width: 100vw;
   justify-content: center;
 }
 
 .card {
-  border-radius: 4px;
-  width: 200px;
-  height: 100px;
-  margin: 0px 2px 2px 0px;
+  // border-radius: 4px;
+  width: 25vw;
+  height: 1fr;
+  // margin: 0px 2px 2px 0px;
   background-color: $card-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 5px;
+  border-right: 1px solid #f1f1f1;
+  border-left: 1px;
 }
 
 .card.gain {
-  border: 1px solid $card-gain;
+  // border: 1px solid $card-gain;
 }
 
 .card.loss {
-  border: 1px solid $card-loss;
+  // border: 1px solid $card-loss;
 }
 
 .card .name {

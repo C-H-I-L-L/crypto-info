@@ -5,9 +5,6 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import '../styles/blog.scss';
-import '../styles/loaders.scss';
-
-// import ReactQuill from 'react-quill';
 
 class Blog extends Component {
   constructor(props) {

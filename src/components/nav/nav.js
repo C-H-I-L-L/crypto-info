@@ -33,12 +33,21 @@ const Nav = (props) => {
       <div className='logo'>
         <img src={Logo} />
       </div>
-      <Link to='/'>Home</Link>
-      <Link to='/news'>News</Link>
+      <Link className='nav-links' to='/'>
+        <FontAwesomeIcon icon='home' />
+        Home
+      </Link>
+      <Link className='nav-links' to='/news'>
+        <FontAwesomeIcon icon='newspaper' />
+        News
+      </Link>
       {/* {props.loggedInStatus === 'LOGGED_IN'
         ? dynamicLink('/where-to-buy', 'wheretobuy')
         : null} */}
-      <Link to='/where-to-buy'>Buy</Link>
+      <Link className='nav-links' to='/where-to-buy'>
+        <FontAwesomeIcon icon='money-bill-wave' />
+        Buy
+      </Link>
       {props.loggedInStatus === 'LOGGED_IN' ? (
         <FontAwesomeIcon
           onClick={handleSignOut}
