@@ -1,5 +1,7 @@
+@import './variables.scss';
+
 .content-loader {
   transform: translateY(30vh);
   font-size: 4em;
-  color: #ea8700;
+  color: $orange;
 }

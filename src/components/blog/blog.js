@@ -102,7 +102,7 @@ class Blog extends Component {
       .then((response) => {
         this.setState({
           blogItems: this.state.blogItems.filter((blogItem) => {
-            return blog.id != blogItem.id;
+            return blog.id !== blogItem.id;
           }),
         });
 
@@ -111,10 +111,6 @@ class Blog extends Component {
       .catch((error) => {
         console.log('delete blog error', error);
       });
-  };
-
-  onHandleChange = () => {
-    console.log('sure');
   };
 
   render = () => {

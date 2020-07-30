@@ -1,17 +1,46 @@
-$card-color: white;
-$card-img-border: lightgrey;
-$card-box-shadow: lightgrey;
+@import './variables';
 
-$font-color: black;
+.news-header {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.content-loader {
+  transform: translateY(30vh);
+  font-size: 4em;
+  color: $orange;
+  display: flex;
+  justify-content: center;
+}
 
 .news-map-container {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-items: center;
+  align-items: center;
 
   .left {
-    color: $font-color;
+    color: black;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    hr {
+      border: 0;
+      clear: both;
+      display: block;
+      width: 96%;
+      background-color: $off-white;
+      height: 1px;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 5px;
+    }
   }
 }
 
@@ -20,14 +49,15 @@ $font-color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: $card-color;
+  background-color: white;
   border-radius: 5px;
   margin: 20px 10px;
-  box-shadow: 2px 2px 4px 2px $card-box-shadow;
+  box-shadow: 2px 2px 4px 2px $off-white;
   width: 80vw;
   height: 30vh;
   right: 0;
   left: 0;
+  overflow: visible;
 }
 
 .news-map-container > .news-card > .top {
@@ -43,10 +73,12 @@ $font-color: black;
   align-items: center;
   // margin: 2vw 5vw;
   width: 100%;
+  font-size: 16px;
 }
 
 .news-map-container > .news-card > .top > .left > h2 {
   text-align: center;
+  font-size: 16px;
 }
 
 .news-map-container > .news-card > .top > .right {
@@ -59,6 +91,6 @@ $font-color: black;
 .news-map-container img {
   width: 20vw;
   height: 27vh;
-  border: 5px solid $card-img-border;
+  border: 5px solid $off-white;
   margin: 5px 5px 0px 0px;
 }

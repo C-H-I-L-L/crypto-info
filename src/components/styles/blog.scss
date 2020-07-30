@@ -1,11 +1,7 @@
-$dark-purple: #7a008f75;
-$purple: #7a008f;
-$light-blue: #00a3ab;
-$dark-blue: #0091ab;
-$button-color: #00a3ab;
+@import './variables.scss';
 
 .blog-container {
-  width: 100vw;
+  width: calc(100vw - 47px);
   height: 100vh;
   display: -webkit-box;
   display: -moz-box;
@@ -41,13 +37,17 @@ $button-color: #00a3ab;
     flex-direction: column;
     width: 50vw;
 
+    .content {
+      width: calc(100vw-800px);
+    }
+
     a {
       text-decoration: none;
-      color: $dark-purple;
+      color: $purple;
       transition: 0.5s ease-in-out;
 
       &:hover {
-        color: $purple;
+        color: $light-purple;
       }
     }
 

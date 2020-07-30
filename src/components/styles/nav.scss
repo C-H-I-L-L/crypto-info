@@ -1,6 +1,4 @@
-$navbar-color: #a7f200;
-$link-padding-color: #ff7800;
-$link-text-color: white;
+@import './variables.scss';
 
 .navbar {
   position: fixed;
@@ -9,54 +7,57 @@ $link-text-color: white;
   justify-content: space-between;
   padding-left: 0vw;
   padding-right: 10vw;
-  background-color: $navbar-color;
+  background-color: $slime-green;
   height: 80px;
   align-items: center;
   left: 0px;
   right: 0px;
-  box-shadow: 0px 1px 2px 3px #0091ab;
+  box-shadow: 0px 1px 2px 3px $dark-blue;
   z-index: 10;
   overflow: hidden;
-}
 
-.navbar a {
-  text-decoration: none;
-  // background-color: $link-padding-color;
-  color: #0091ab;
-  font-style: oblique 10deg;
-  // padding: 3px 3px 3px 10px;
-  border-radius: 15px;
-  width: 67px;
-  height: 67px;
-  display: flex;
-  justify-content: center;
-  font-size: 22px;
-  margin-top: 20px;
-  flex-grow: 2;
-  position: relative;
-}
+  a {
+    text-decoration: none;
+    // background-color: $link-padding-color;
+    color: $dark-blue;
+    font-style: oblique 10deg;
+    // padding: 3px 3px 3px 10px;
+    border-radius: 15px;
+    width: 67px;
+    height: 67px;
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    margin-top: 20px;
+    flex-grow: 2;
+    position: relative;
+  }
 
-.navbar a:hover {
-  transition: 0.75s;
-  padding: 7px;
-  color: white;
-  position: relative;
-  // box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.25);
-}
+  a:hover {
+    transition: 0.5s;
+    padding: 7px;
+    color: white;
+    position: relative;
+    letter-spacing: 3px;
+    // box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.25);
+  }
 
-.navbar .logo img {
-  height: 100%;
-  position: flex-start;
-  margin-top: 6px;
-}
+  .logo img {
+    height: 100%;
+    position: flex-start;
+    margin-top: 6px;
+    margin-right: 5px;
+  }
 
-.sign-out {
-  color: #0091ab;
-}
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-right: 5px;
+  }
 
-.nav-links {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
+  .sign-out {
+    color: $dark-blue;
+  }
 }

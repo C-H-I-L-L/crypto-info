@@ -1,58 +1,90 @@
-$card-gain: black;
-$card-loss: #e60000;
-$card-color: #d705fb;
+@import './variables.scss';
 
-span {
-  color: black;
-  letter-spacing: 1px;
-}
 .cards {
   color: white;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   display: flex;
   flex-direction: row;
-  margin: 3px 0px 0px 0px;
-  width: 100vw;
+  width: calc(100vw - 47px);
   justify-content: center;
-}
-
-.card {
-  // border-radius: 4px;
-  width: 25vw;
-  height: 1fr;
-  // margin: 0px 2px 2px 0px;
-  background-color: $card-color;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  padding-right: 5px;
-  border-right: 1px solid #f1f1f1;
-  border-left: 1px;
+  overflow: none;
+  margin-top: 3px;
+  transform: translateX(10px);
+
+  .card {
+    // border-radius: 4px;
+    width: 33.333333333333vw;
+    height: 1fr;
+    // margin: 0px 2px 2px 0px;
+    background-color: $light-purple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid $purple;
+    border-left: 1px;
+    // border-radius: 0px 0px 7px 7px;
+
+    .price {
+      margin-left: 1vw;
+      // font-size: 3vw;
+    }
+    .percentage {
+      // font-size: 0.9em;
+      padding-left: 0.7vw;
+    }
+    .coin-name {
+      padding-top: 12px;
+      padding-left: 0.7vw;
+      padding-bottom: 4px;
+      width: 2vw;
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      // margin-top: 5px;
+      // margin-left: 5px;
+      margin-bottom: 0px;
+      justify-content: center;
+      margin-right: 20px;
+
+      span {
+        margin-bottom: 0px;
+        font-weight: normal;
+        color: white;
+        text-align: center;
+        transform: translateX(-3px);
+        font-size: 13px;
+      }
+    }
+    .percentage.gain,
+    .percentage.loss {
+      overflow: none;
+      .arrow {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .card.gain {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .card.loss {
+    display: flex;
+    justify-content: center;
+  }
+
+  .coin-label:hover {
+    transform: translateY(20px);
+  }
 }
 
-.card.gain {
-  // border: 1px solid $card-gain;
-}
-
-.card.loss {
-  // border: 1px solid $card-loss;
-}
-
-.card .name {
-  padding: 8px 12px;
-  font-weight: bold;
-}
-
-.card .name span {
-  margin: 0px 0px 0px 4px;
-  font-weight: normal;
-}
-
-.card .percentage {
-  font-size: 0.9em;
-  padding-left: 0.5vw;
-}
-
+//
+// this is to change border color according to
+// if there was a loss or gain in the last ~10 seconds
+//
 // .card .percentage.gain,
 // .card .price.gain {
 //   color: $card-gain;
@@ -62,10 +94,6 @@ span {
 // .card .price.loss {
 //   color: $card-loss;
 // }
-
-.card .price {
-  padding-left: 0.5vw;
-}
 
 .card .percentage.gain,
 .card .percentage.loss {

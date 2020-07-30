@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 .buying-container {
   width: 100vw;
   display: flex;
@@ -5,16 +7,34 @@
 
   .buying-content {
     display: flex;
-    width: 75vw;
+    width: 80vw;
     flex-direction: column;
+    box-shadow: 0px 1px 3px 2px $off-white;
+    border-radius: 10px;
+    transform: translateY(-2px);
 
     .article-main {
       width: 60vw;
       height: 45vh;
+      margin-right: 10px;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      border: 10px solid black;
+      border-radius: 20px;
     }
 
     .heading {
       text-align: center;
+    }
+
+    hr {
+      border: 0;
+      clear: both;
+      display: block;
+      width: 50vw;
+      background-color: $off-white;
+      height: 1px;
+      border: 1px dashed;
     }
 
     .quote {
@@ -27,9 +47,14 @@
         transform: translateX(20px);
       }
     }
-    .article-image {
-      img {
-        width: 20vw;
+
+    .article-body {
+      margin: 10px 10px;
+
+      .article-image {
+        img {
+          width: 20vw;
+        }
       }
     }
   }

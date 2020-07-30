@@ -1,12 +1,11 @@
-$background-color: white;
-
 .App {
   /* display: flex; */
-  width: 100vw;
-  height: 1fit-content;
+  width: 90vw;
+  height: fit-content;
   align-items: center;
-  background-color: $background-color;
+  background-color: white;
   overflow: auto;
+  font-size: 16px;
 }
 
 .hero {
@@ -17,10 +16,10 @@ $background-color: white;
 html {
   margin: none;
   font-family: 'Titillium Web', sans-serif;
-  width: 100vw;
   margin: 0;
 }
 
 .container {
   padding-top: 4.6em;
+  width: calc(100vw - 40px);
 }

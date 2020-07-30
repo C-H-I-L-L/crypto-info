@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import fetch from 'isomorphic-fetch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { Icon } from 'coinmarketcap-cryptocurrency-icons';
+import Media from 'react-media';
 
 import '../styles/card-styles.scss';
+import { truncate } from 'lodash';
 
 class CryptoCard extends Component {
   constructor(props) {
@@ -13,6 +16,7 @@ class CryptoCard extends Component {
       symbol: props.symbol,
       price: null,
       lastPrice: null,
+      priceLoading: true,
     };
 
     this.pollPrice = this.pollPrice.bind(this);
@@ -32,6 +36,7 @@ class CryptoCard extends Component {
       .then((resp) => resp.json())
       .then((json) => {
         this.setState((prevState) => ({
+          priceLoading: false,
           price: json.USD,
           lastPrice:
             prevState.price !== json.USD
@@ -67,25 +72,98 @@ class CryptoCard extends Component {
     const gainloss = lastPrice > price ? 'loss' : 'gain';
 
     return (
-      <div className='cards'>
-        <div className={`card ${gainloss}`}>
-          <div className='name'>
-            {name}
-            <span>({symbol})</span>
-          </div>
+      <Media
+        queries={{
+          small: '(max-width: 599px)',
+          medium: '(min-width: 600px) and (max-width: 1199px)',
+          large: '(min-width: 1200px)',
+        }}
+      >
+        {(matches) => (
+          <>
+            {matches.small && (
+              <div className='card'>
+                <div className={`card ${gainloss}`}>
+                  <div className='coin-name'>
+                    <Icon
+                      className='symbol'
+                      i={symbol.toLowerCase()}
+                      size={20}
+                    />
+                    <span>({symbol})</span>
+                  </div>
 
-          <div className={`percentage ${gainloss}`}>
+                  {/* <div className={`percentage ${gainloss}`}>
+                    {lastPrice === null ? null : this.whichArrow()}
+                    {this.priceChange(lastPrice, price)}
+                  </div> */}
+
+                  <div className={`price ${gainloss}`}>
+                    <strong>
+                      {this.state.priceLoading === true ? (
+                        <FontAwesomeIcon icon='circle-notch' spin />
+                      ) : (
+                        '$'.concat(price)
+                      )}
+                    </strong>
+                  </div>
+                </div>
+                {/* <div ClassName='coin-label'>{symbol}</div> */}
+              </div>
+            )}
+
+            {matches.medium && (
+              <div className='card'>
+                <div className={`card ${gainloss}`}>
+                  <div className='coin-name'>
+                    <Icon
+                      className='symbol'
+                      i={symbol.toLowerCase()}
+                      size={20}
+                    />
+                    <span>({symbol})</span>
+                  </div>
+
+                  {/* <div className={`percentage ${gainloss}`}>
             {lastPrice === null ? null : this.whichArrow()}
             {this.priceChange(lastPrice, price)}
-          </div>
+          </div> */}
 
-          <div className='logo'></div>
+                  <div className={`price ${gainloss}`}>
+                    <strong>${price}</strong>
+                  </div>
+                </div>
+                {/* <div ClassName='coin-label'>{symbol}</div> */}
+              </div>
+            )}
 
-          <div className={`price ${gainloss}`}>
-            <strong>${price}</strong>
-          </div>
-        </div>
-      </div>
+            {matches.large && (
+              <div className='card'>
+                <div className={`card ${gainloss}`}>
+                  <div className='coin-name'>
+                    <Icon
+                      className='symbol'
+                      i={symbol.toLowerCase()}
+                      size={20}
+                    />
+                    <span>({symbol})</span>
+                  </div>
+
+                  <div className={`percentage ${gainloss}`}>
+                    {lastPrice === null ? null : this.whichArrow()}
+                    {this.priceChange(lastPrice, price)}
+                  </div>
+
+                  <div className={`price ${gainloss}`}>
+                    <strong>${price}</strong>
+                  </div>
+                </div>
+                {/* <div ClassName='coin-label'>{symbol}</div> */}
+              </div>
+            )}
+          </>
+        )}
+      </Media>
     );
   }
 }

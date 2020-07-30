@@ -1,5 +1,7 @@
+@import './variables';
+
 .DraftEditor-root {
-  border: 1px solid #f1f1f1 !important;
+  border: 1px solid $off-white !important;
   padding: 20px;
   border: 1px solid;
   border-radius: 15px;
