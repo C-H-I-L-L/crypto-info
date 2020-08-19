@@ -22,7 +22,7 @@ export default class News extends Component {
   componentDidMount() {
     this.setState({ loading: true });
     fetch(
-      'http://newsapi.org/v2/everything?q=bitcoin&from=${moment}&sortBy=publishedAt&apiKey=bbbe441196a54f8b97f2708a349700aa'
+      `http://newsapi.org/v2/everything?q=bitcoin&from=${moment}&sortBy=publishedAt&apiKey=bbbe441196a54f8b97f2708a349700aa`
     )
       .then((response) => {
         return response.json();
@@ -53,6 +53,10 @@ export default class News extends Component {
                         style={{
                           fontSize: 20,
                           textDecoration: 'underline overline',
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          transform: 'translateX(15px)',
                         }}
                       >
                         Crypto News For: {moment().format('MMMM Do YYYY')}
@@ -75,23 +79,33 @@ export default class News extends Component {
                               className='left'
                               style={{
                                 width: '50vw',
-                                fontSize: '!important 12px',
+                                fontSize: '14px',
+                                height: 'fit-content',
                               }}
                             >
-                              <h2 style={{ fontStyle: 'italic' }}>
+                              <h2
+                                style={{
+                                  fontStyle: 'italic',
+                                  fontSize: '14px',
+                                }}
+                              >
                                 <Truncate lines={1} ellipsis='...'>
                                   {item.title}
                                 </Truncate>
                               </h2>
                               <hr />
                               <p>
-                                <Truncate lines={1} ellipsis='...'>
+                                <Truncate
+                                  lines={1}
+                                  ellipsis=''
+                                  style={{ width: '100%' }}
+                                >
                                   {item.author}
                                 </Truncate>
                               </p>
                               <hr />
                               <p>
-                                <Truncate lines={4} ellipsis='...'>
+                                <Truncate lines={5} ellipsis='...'>
                                   {item.content}
                                 </Truncate>
                               </p>
@@ -105,8 +119,8 @@ export default class News extends Component {
                                     : item.urlToImage
                                 }
                                 style={{
-                                  height: 125,
-                                  transform: 'translateY(25px)',
+                                  height: 100,
+                                  transform: 'translateY(45px)',
                                 }}
                                 alt=''
                               />
@@ -203,14 +217,14 @@ export default class News extends Component {
                           <div className='top'>
                             <div className='left'>
                               <h2>
-                                <Truncate lines={1} ellipsis='...'>
+                                <Truncate lines={2} ellipsis='...'>
                                   {item.title}
                                 </Truncate>
                               </h2>
                               <hr />
                               <p>{item.author}</p>
                               <hr />
-                              <p>{item.content}</p>
+                              <p className='news-content'>{item.content}</p>
                               {/* <a href={item.url}>Read More</a> */}
                             </div>
                             <div className='right'>

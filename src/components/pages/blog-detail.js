@@ -91,7 +91,9 @@ export default class BlogDetail extends Component {
               <div className='content'>
                 <div>{ReactHtmlParser(content)}</div>
               </div>
-              <div className='status'>{blog_status}</div>
+              {this.props.loggedInStatus === 'LOGGED_IN' ? (
+                <div className='status'>{blog_status}</div>
+              ) : null}
             </div>
           </div>
         );

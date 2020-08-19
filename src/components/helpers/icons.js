@@ -10,6 +10,7 @@ import {
   faHome,
   faNewspaper,
   faMoneyBillWave,
+  faBlog,
 } from '@fortawesome/free-solid-svg-icons';
 
 const Icons = () => {
@@ -22,7 +23,8 @@ const Icons = () => {
     faQuoteRight,
     faHome,
     faNewspaper,
-    faMoneyBillWave
+    faMoneyBillWave,
+    faBlog
   );
 };
 

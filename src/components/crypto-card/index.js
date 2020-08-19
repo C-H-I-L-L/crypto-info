@@ -6,7 +6,6 @@ import { Icon } from 'coinmarketcap-cryptocurrency-icons';
 import Media from 'react-media';
 
 import '../styles/card-styles.scss';
-import { truncate } from 'lodash';
 
 class CryptoCard extends Component {
   constructor(props) {
@@ -68,7 +67,9 @@ class CryptoCard extends Component {
   }
 
   render() {
-    const { name, symbol, price, lastPrice } = this.state;
+    // const { name, symbol, price, lastPrice } = this.state;
+    const { symbol, price, lastPrice } = this.state;
+
     const gainloss = lastPrice > price ? 'loss' : 'gain';
 
     return (
@@ -82,7 +83,7 @@ class CryptoCard extends Component {
         {(matches) => (
           <>
             {matches.small && (
-              <div className='card'>
+              <div className='card' style={{ width: '33.333333333333333vw' }}>
                 <div className={`card ${gainloss}`}>
                   <div className='coin-name'>
                     <Icon

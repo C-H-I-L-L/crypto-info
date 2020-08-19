@@ -1,6 +1,6 @@
 .App {
   /* display: flex; */
-  width: 90vw;
+  width: 89vw;
   height: fit-content;
   align-items: center;
   background-color: white;
@@ -22,4 +22,8 @@ html {
 .container {
   padding-top: 4.6em;
   width: calc(100vw - 40px);
+}
+
+.admin-blog-wrapper {
+  width: 80vw;
 }

@@ -16,7 +16,7 @@
 }
 
 .news-map-container {
-  width: 100vw;
+  width: 98vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,7 +63,7 @@
 .news-map-container > .news-card > .top {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 80vw;
   justify-content: space-between;
 }
 
@@ -93,4 +93,10 @@
   height: 27vh;
   border: 5px solid $off-white;
   margin: 5px 5px 0px 0px;
+}
+
+.news-map-container {
+  .news-content {
+    padding-top: 10px;
+  }
 }

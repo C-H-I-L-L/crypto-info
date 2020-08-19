@@ -3,7 +3,7 @@
 .navbar {
   position: fixed;
   display: flex;
-  width: cover;
+  width: calc(100vw-45px);
   justify-content: space-between;
   padding-left: 0vw;
   padding-right: 10vw;
@@ -15,6 +15,7 @@
   box-shadow: 0px 1px 2px 3px $dark-blue;
   z-index: 10;
   overflow: hidden;
+  flex: 1;
 
   a {
     text-decoration: none;
@@ -29,16 +30,17 @@
     justify-content: center;
     font-size: 22px;
     margin-top: 20px;
+    margin-left: 15px;
     flex-grow: 2;
     position: relative;
   }
 
   a:hover {
     transition: 0.5s;
-    padding: 7px;
+    // padding: 7px;
     color: white;
     position: relative;
-    letter-spacing: 3px;
+    // letter-spacing: 3px;
     // box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.25);
   }
 
@@ -59,5 +61,15 @@
 
   .sign-out {
     color: $dark-blue;
+    margin-left: 10px;
+
+    &:hover {
+      transition: 0.5s;
+      // padding: 7px;
+      color: white;
+      position: relative;
+      // letter-spacing: 3px;
+      // box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.25);
+    }
   }
 }

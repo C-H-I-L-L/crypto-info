@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import CryptoCard from './index';
 
 class App extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     return (
       <div className='content'>
