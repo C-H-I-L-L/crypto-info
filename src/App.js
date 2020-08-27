@@ -106,7 +106,7 @@ export default class App extends Component {
 
             <Route
               exact
-              path='/b/:slug'
+              path='/blogPost/:slug'
               render={(props) => (
                 <BlogDetail
                   {...props}

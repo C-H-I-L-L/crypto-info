@@ -15,6 +15,7 @@ export default class BlogDetail extends Component {
       blogItem: {},
       editMode: false,
     };
+    this.getBlogItem = this.getBlogItem.bind(this);
   }
 
   handleUpdateFormSubmission = (blog) => {
@@ -40,23 +41,23 @@ export default class BlogDetail extends Component {
     }
   };
 
-  componentDidMount() {
-    this.getBlogItem();
-  }
-
   getBlogItem() {
+    const id = this.state.currentId;
     axios
-      .get(
-        `https://wubbalubbadubbdubb.devcamp.space/portfolio/portfolio_blogs/${this.state.currentId}`
-      )
+      .get(`http://127.0.0.1:5000/blogPost/${id}`)
       .then((response) => {
         this.setState({
-          blogItem: response.data.portfolio_blog,
+          blogItem: response.data,
         });
+        console.log('reponse', response.data);
       })
       .catch((error) => {
         console.log('getBlogItem error', error);
       });
+  }
+
+  componentDidMount() {
+    this.getBlogItem();
   }
 
   render() {

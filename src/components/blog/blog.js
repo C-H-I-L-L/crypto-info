@@ -24,7 +24,7 @@ class Blog extends Component {
   handleSuccessfulNewBlogSubmission = (blog) => {
     this.setState({
       blogModalIsOpen: false,
-      blogItems: [blog].concat(this.state.blogItems),
+      blogPosts: [blog].concat(this.state.blogPosts),
     });
   };
 
@@ -34,16 +34,17 @@ class Blog extends Component {
     });
     axios
       .get(
-        `https://wubbalubbadubbdubb.devcamp.space/portfolio/portfolio_blogs?page=${this.state.currentPage}`,
-        {
-          withCredentials: true,
-        }
+        'http://127.0.0.1:5000/blogPosts'
+        // ,
+        // {
+        //   withCredentials: true,
+        // }
       )
       .then((response) => {
-        console.log('getting', response.data);
+        // console.log('getting', response.data[0]);
         this.setState({
-          blogItems: this.state.blogItems.concat(response.data.portfolio_blogs),
-          totalCount: response.data.meta.total_records,
+          blogItems: this.state.blogItems.concat(response.data[0]),
+          totalCount: response.data[0].length,
           isLoading: false,
         });
       })
@@ -95,10 +96,9 @@ class Blog extends Component {
 
   handleDeleteClick = (blog) => {
     axios
-      .delete(
-        `https://api.devcamp.space/portfolio/portfolio_blogs/${blog.id}`,
-        { withCredentials: true }
-      )
+      .delete(`http://127.0.0.1:5000/blogPost/${blog.id}`, {
+        withCredentials: true,
+      })
       .then((response) => {
         this.setState({
           blogItems: this.state.blogItems.filter((blogItem) => {

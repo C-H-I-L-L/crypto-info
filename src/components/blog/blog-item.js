@@ -6,15 +6,15 @@ import Truncate from 'react-truncate';
 const BlogItem = (props) => {
   const {
     id,
-    // blog_status,
+    blog_status,
     content,
     title,
-    // featured_image_url,
+    featured_image_url,
   } = props.blogItem;
 
   return (
     <div>
-      <Link to={`/b/${id}`}>
+      <Link to={`/blogPost/${id}`}>
         <h1>{title}</h1>
       </Link>
       <div>
@@ -22,7 +22,7 @@ const BlogItem = (props) => {
           lines={3}
           ellipsis={
             <span>
-              ...<Link to={`/b/${id}`}>Read More</Link>
+              ...<Link to={`/blogPost/${id}`}>Read More</Link>
             </span>
           }
         >
