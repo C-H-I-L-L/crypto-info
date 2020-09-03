@@ -23,9 +23,11 @@ class Blog(db.Model):
     featured_image = db.Column(db.String(250), unique=False)
     
 
-    def __init__(self, title, content):
+    def __init__(self, title, content, published, featured_image):
         self.title = title
         self.content = content
+        self.published = published
+        self.featured_image = featured_image
 
 class BlogSchema(ma.Schema):
     class Meta:
@@ -40,36 +42,36 @@ post_schema = BlogSchema()
 posts_schema = BlogSchema(many=True)
 
 
-# @app.route('/blogPost', methods=["POST"])
-# def add_post():
-#     title = request.json['title']
-#     content = request.json['content']
-#     published = request.json['published']
-#     featured_image = request.json['featured_image']
-
-#     new_post = Blog(title, content, published, featured_image)
-
-#     db.session.add(new_post)
-#     db.session.commit()
-
-#     post =  Blog.query.get(new_post.id)
-
-#     return post_schema.jsonify(post)
-
-# Endpoint to create a new guide
 @app.route('/blogPost', methods=["POST"])
 def add_post():
     title = request.json['title']
     content = request.json['content']
+    published = request.json['published']
+    featured_image = request.json['featured_image']
 
-    new_post = Blog(title, content)
+    new_post = Blog(title, content, published, featured_image)
 
     db.session.add(new_post)
     db.session.commit()
 
-    post = Blog.query.get(new_post.id)
+    post =  Blog.query.get(new_post.id)
 
     return post_schema.jsonify(post)
+
+# Jordan's POST endpoint, modified with my project's values # Endpoint to create a new guide
+# @app.route('/blogPost', methods=["POST"])
+# def add_post():
+#     title = request.json['title']
+#     content = request.json['content']
+
+#     new_post = Blog(title, content)
+
+#     db.session.add(new_post)
+#     db.session.commit()
+
+#     post = Blog.query.get(new_post.id)
+
+#     return post_schema.jsonify(post)
 
 @app.route('/blogPosts', methods=["GET"])
 def get_posts():
