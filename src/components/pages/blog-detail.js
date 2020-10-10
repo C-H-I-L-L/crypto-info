@@ -28,7 +28,7 @@ export default class BlogDetail extends Component {
   handleFeaturedImageDelete = () => {
     this.setState({
       blogItem: {
-        featured_image_url: '',
+        featured_image: '',
       },
     });
   };
@@ -44,12 +44,12 @@ export default class BlogDetail extends Component {
   getBlogItem() {
     const id = this.state.currentId;
     axios
-      .get(`http://127.0.0.1:5000/blogPost/${id}`)
+      .get(`https://polar-garden-00154.herokuapp.com/blogPost/${id}`)
       .then((response) => {
         this.setState({
           blogItem: response.data,
         });
-        console.log('reponse', response.data);
+        console.log('response', response.data);
       })
       .catch((error) => {
         console.log('getBlogItem error', error);
@@ -61,12 +61,7 @@ export default class BlogDetail extends Component {
   }
 
   render() {
-    const {
-      title,
-      content,
-      featured_image_url,
-      blog_status,
-    } = this.state.blogItem;
+    const { title, content, featured_image, published } = this.state.blogItem;
 
     const contentManager = () => {
       if (this.state.editMode) {
@@ -87,13 +82,16 @@ export default class BlogDetail extends Component {
             <div className='blog-post'>
               <h1 onClick={this.handleEditClick}>{title}</h1>
 
-              <BlogFeaturedImage img={featured_image_url} />
+              <BlogFeaturedImage
+                onClick={console.log(this.state.content)}
+                img={featured_image}
+              />
 
               <div className='content'>
                 <div>{ReactHtmlParser(content)}</div>
               </div>
               {this.props.loggedInStatus === 'LOGGED_IN' ? (
-                <div className='status'>{blog_status}</div>
+                <div className='status'>{published}</div>
               ) : null}
             </div>
           </div>

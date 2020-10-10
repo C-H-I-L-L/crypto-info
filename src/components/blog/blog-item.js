@@ -18,6 +18,7 @@ const BlogItem = (props) => {
         <h1>{title}</h1>
       </Link>
       <div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <Truncate
           lines={3}
           ellipsis={

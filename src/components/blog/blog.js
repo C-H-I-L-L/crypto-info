@@ -33,13 +33,7 @@ class Blog extends Component {
       currentPage: this.state.currentPage + 1,
     });
     axios
-      .get(
-        'http://127.0.0.1:5000/blogPosts'
-        // ,
-        // {
-        //   withCredentials: true,
-        // }
-      )
+      .get('https://polar-garden-00154.herokuapp.com/blogPosts')
       .then((response) => {
         // console.log('getting', response.data[0]);
         this.setState({
@@ -96,7 +90,7 @@ class Blog extends Component {
 
   handleDeleteClick = (blog) => {
     axios
-      .delete(`http://127.0.0.1:5000/blogPost/${blog.id}`, {
+      .delete(`https://polar-garden-00154.herokuapp.com/blogPost/${blog.id}`, {
         withCredentials: true,
       })
       .then((response) => {
@@ -160,7 +154,6 @@ class Blog extends Component {
           modalIsOpen={this.state.blogModalIsOpen}
           handleSuccessfulFormSubmission={this.handleSuccessfulFormSubmission}
         />
-
         <div className='new-blog-link'>
           <a onClick={this.handleNewBlogClick}>AWM A MODAL!!</a>
         </div>

@@ -130,7 +130,7 @@ export default class App extends Component {
 
             <Route path='/' component={WhereToBuy} />
           </Switch>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </Router>
     );

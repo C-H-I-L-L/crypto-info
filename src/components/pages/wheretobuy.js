@@ -14,7 +14,7 @@ export default function whereToBuy() {
           <p>An overview of different ways to buy cryptocurrency these days.</p>
           <hr className='horizontal-line' />
           <div className='main-image-container'>
-            <img className='main-image' src={BTC} />
+            <img className='main-image' src={BTC} alt='' />
           </div>
         </div>
         {/* BTC picture goes here */}
@@ -33,9 +33,11 @@ export default function whereToBuy() {
               It really is as easy as buying clothes on Amazon. Coinbase, for
               example, is a popular interface to buy crypto with fiat (fiat =
               paper currency like dollars or euro). On{' '}
-              <a className='links'>Coinbase</a>, users need to create an account
-              and verify identity. After that, they can buy with their debit
-              card.
+              <a href='' className='links'>
+                Coinbase
+              </a>
+              , users need to create an account and verify identity. After that,
+              they can buy with their debit card.
             </p>
             <div className='quote'>
               <FontAwesomeIcon icon='quote-left' />
@@ -56,11 +58,7 @@ export default function whereToBuy() {
               regulations, bringing it to compliance in USA, Canada, Europe, the
               UK, Australia, and Singapore.
             </p>
-            <img
-              src={article1}
-              alt='Image: Buybitcoinworldwide'
-              className='article-image'
-            />
+            <img src={article1} alt='' className='article-image' />
             <p>
               <strong>Bitfinex</strong> is another very popular exchange that
               has been around as early as 2012. Its website boasts being the
