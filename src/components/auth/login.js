@@ -36,7 +36,8 @@ export default class Login extends Component {
           //
           // bug is ocurring here - the logout button and admin priveleges don't appear
           //
-          this.props.history.push('/');
+          this.props.history.push('/')
+          this.props.handleSuccessfulAuth();
         } else {
           this.setState({
             errorText: 'Wrong email or password',

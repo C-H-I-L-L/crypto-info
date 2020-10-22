@@ -54,7 +54,7 @@ export default class BlogForm extends Component {
   };
 
   handleFeaturedImageDrop = () => {
-    return { addedfile: (file) => this.setState({ featured_image: file }) };
+    return { addedfile: (file) => this.setState({ featured_image: file.dataURL }) };
   };
 
   // handleSubmit = (event) => {
@@ -125,8 +125,9 @@ export default class BlogForm extends Component {
   // }
 
   handleSubmit = (event) => {
-    const blog_status = this.state.blog_status === true ? 1 : 0
-    const image = this.state.featured_image === '' ? '' : this.state.featured_image
+    const blog_status = this.state.blog_status === true ? 1 : 0;
+    const image = this.state.featured_image === '' ? '' : this.state.featured_image;
+    
     axios({
       method: this.state.apiMethod,
       url: this.state.apiUrl,

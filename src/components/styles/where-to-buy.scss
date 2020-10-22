@@ -1,5 +1,9 @@
 @import './variables.scss';
 
+a {
+  text-decoration: none;
+}
+
 .buying-container {
   width: 99vw;
   height: fit-content;
@@ -55,7 +59,7 @@
       .main-image {
         display: flex;
         align-items: center;
-        width: 100vw;
+        width: 100%;
         // transform: translateX(-60px);
         height: 40vh;
         margin-right: 10px;
@@ -113,8 +117,10 @@
         }
 
         .article-image {
-          width: 86vw;
-          height: 40vh;
+          width: 90%;
+          min-height: 200px;
+          border: 3px $off-white;
+          border-radius: 10px;
         }
       }
     }

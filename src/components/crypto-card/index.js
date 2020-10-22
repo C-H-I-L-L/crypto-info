@@ -49,9 +49,8 @@ class CryptoCard extends Component {
     const diff = lastPrice - price;
     const change = diff / lastPrice;
     return lastPrice === null ? (
-      <div>
-        <FontAwesomeIcon icon='circle-notch' spin />
-        &nbsp;&nbsp; last 10s-change...
+      <div classname='loading-price'>
+        <FontAwesomeIcon alt='loading last 10-second change' icon='circle-notch' spin />
       </div>
     ) : (
       (change * -100).toFixed(3) + '%'

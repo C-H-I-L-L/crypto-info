@@ -18,7 +18,7 @@ export default class BlogModal extends Component {
         right: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%',
-        width: '800px',
+        width: '85%',
       },
       overlay: {
         backgroundColor: 'rgba(1, 1, 1, 0.75)',

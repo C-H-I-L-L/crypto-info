@@ -5,26 +5,23 @@
   font-size: 0.9rem;
   display: flex;
   flex-direction: row;
-  width: calc(100vw - 45px);
+  width: 100%;
   justify-content: center;
   align-items: center;
   overflow: none;
   margin-top: 3px;
-  transform: translateX(10px);
+  // transform: translateX(10px);
   margin-left: 0;
 
   .card {
     // border-radius: 4px;
-    width: 33.333333333333vw;
+    width: 33.333333333333333333333333%;
     height: 1fr;
     // margin: 0px 2px 2px 0px;
     background-color: $light-purple;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 1px solid $purple;
-    border-left: 1px;
-    // border-radius: 0px 0px 7px 7px;
 
     .price {
       margin-left: 1vw;
@@ -57,9 +54,17 @@
         font-size: 13px;
       }
     }
+    .loading-price {
+      display: flex;
+      flex-direction: row;
+    }
     .percentage.gain,
     .percentage.loss {
       overflow: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
       .arrow {
         margin-right: 5px;
       }

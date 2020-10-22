@@ -1,6 +1,6 @@
 .App {
   /* display: flex; */
-  width: 89vw;
+  width: 100%;
   height: fit-content;
   align-items: center;
   background-color: white;
@@ -14,16 +14,36 @@
 }
 
 html {
+  height: 100vh;
+  width: 100%;
   margin: none;
   font-family: 'Titillium Web', sans-serif;
   margin: 0;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
 }
 
 .container {
   padding-top: 4.6em;
-  width: calc(100vw - 40px);
+  width: 100%;
 }
 
 .admin-blog-wrapper {
   width: 80vw;
+}
+
+.footer {
+  align-self: flex-end;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#page-wrap {
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
