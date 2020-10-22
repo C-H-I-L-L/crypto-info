@@ -1,24 +1,24 @@
 import React from 'react';
-import { slide as Menu } from 'react-burger-menu';
+import { push as Menu } from 'react-burger-menu';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
-export default props => {
-  return (
-    <Menu>
-      <Link className='nav-links' to='/where-to-buy'>
-        <FontAwesomeIcon icon='home' />
+const BurgerMenu = (props) => {
+        return (
+            <div className='burger-menu-container'>
+            <Menu width={'50%'} right>
+      <Link className='burger-link' to='/where-to-buy'>
+        <FontAwesomeIcon className= "burger-menu-icon" icon='home' />
         Home
       </Link>
-      <Link className='nav-links' to='/news'>
-        <FontAwesomeIcon icon='newspaper' />
+      <Link className='burger-link' to='/news'>
+        <FontAwesomeIcon className= "burger-menu-icon" icon='newspaper' />
         News
       </Link>
 
-      {/* {props.loggedInStatus === 'LOGGED_IN'
-        ? dynamicLink('/where-to-buy', 'wheretobuy')
-        : null} */}
-
-      <Link className='nav-links' to='/blog'>
-        <FontAwesomeIcon icon='blog' />
+      <Link className='burger-link' to='/blog'>
+        <FontAwesomeIcon className= "burger-menu-icon" icon='blog' />
         Blog
       </Link>
 
@@ -31,5 +31,8 @@ export default props => {
         />
       ) : null}
     </Menu>
-  );
-};
+    </div>
+    )}
+   
+
+export default withRouter(BurgerMenu);

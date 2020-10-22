@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import '../styles/nav.scss';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { withRouter } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Media from 'react-media';
 
+import '../styles/nav.scss';
+
+import BurgerMenu from '../burger-menu/burger-menu';
 import Logo from '../../resources/images/crypto-logo.png';
-import WhereToBuy from '../pages/wheretobuy';
 
 const Nav = (props) => {
   const dynamicLink = (route, linkText) => {
@@ -26,41 +28,71 @@ const Nav = (props) => {
       .catch((error) => {
         console.log('error signing out', error);
       });
-  };
+    };
+    
+  const navStuff =
+    <div className='navbar'>
+    <div className='logo'>
+      <img src={Logo} />
+    </div>
+    <Link className='nav-links' to='/where-to-buy'>
+      <FontAwesomeIcon icon='home' />
+      Home
+    </Link>
+    <Link className='nav-links' to='/news'>
+      <FontAwesomeIcon icon='newspaper' />
+      News
+    </Link>
 
-  return (
+    {/* {props.loggedInStatus === 'LOGGED_IN'
+      ? dynamicLink('/where-to-buy', 'wheretobuy')
+      : null} */}
+
+    <Link className='nav-links' to='/blog'>
+      <FontAwesomeIcon icon='blog' />
+      Blog
+    </Link>
+
+    {props.loggedInStatus === 'LOGGED_IN' ? (
+      <FontAwesomeIcon
+        onClick={handleSignOut}
+        icon='sign-out-alt'
+        cursor='pointer'
+        className='sign-out'
+      />
+    ) : null}
+  </div>;
+
+  return ( 
+  
+  <Media
+    queries={{
+      small: '(max-width: 599px)',
+      medium: '(min-width: 600px) and (max-width: 1199px)',
+      large: '(min-width: 1200px)',
+    }}
+  >
+   {(matches) => (
+          <>
+            {matches.small && (
     <div className='navbar'>
       <div className='logo'>
         <img src={Logo} />
       </div>
-      <Link className='nav-links' to='/where-to-buy'>
-        <FontAwesomeIcon icon='home' />
-        Home
-      </Link>
-      <Link className='nav-links' to='/news'>
-        <FontAwesomeIcon icon='newspaper' />
-        News
-      </Link>
-
-      {/* {props.loggedInStatus === 'LOGGED_IN'
-        ? dynamicLink('/where-to-buy', 'wheretobuy')
-        : null} */}
-
-      <Link className='nav-links' to='/blog'>
-        <FontAwesomeIcon icon='blog' />
-        Blog
-      </Link>
-
-      {props.loggedInStatus === 'LOGGED_IN' ? (
-        <FontAwesomeIcon
-          onClick={handleSignOut}
-          icon='sign-out-alt'
-          cursor='pointer'
-          className='sign-out'
-        />
-      ) : null}
+      <BurgerMenu loggedInStatus={props.loggedInStatus} handleSignOut={props.handleSignOut} />
     </div>
-  );
-};
+    )}
 
+{matches.medium && (
+  navStuff
+)}
+
+{matches.large && (
+  navStuff
+)}
+</>
+)}
+
+</Media>
+  )}
 export default withRouter(Nav);

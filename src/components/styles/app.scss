@@ -47,3 +47,8 @@ body {
   padding-bottom: 10px;
   padding-top: 10px;
 }
+
+.burger-menu-container {
+  display: flex !important;
+  flex-direction: row;
+}
