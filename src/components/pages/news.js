@@ -30,7 +30,6 @@ export default class News extends Component {
       .then((myJson) => {
         this.setState({ articles: myJson.articles, isLoading: false });
       });
-    // .then(this.setState({ isLoading: false }));
   }
 
   render() {
@@ -45,6 +44,8 @@ export default class News extends Component {
         >
           {(matches) => (
             <>
+// small-screen-size
+
               {matches.small && (
                 <>
                   <div className='news-header'>
@@ -136,6 +137,8 @@ export default class News extends Component {
                 </>
               )}
 
+// medium-screen-size
+
               {matches.medium && (
                 <>
                   <div className='news-header'>
@@ -148,7 +151,7 @@ export default class News extends Component {
 
                   <div className='content-loader'>
                     {this.state.isLoading ? (
-                      <FontAwesomeIcon icon='circle-notch' spin />
+                       <FontAwesomeIcon icon='circle-notch' spin />
                     ) : null}
                   </div>
 
@@ -194,6 +197,8 @@ export default class News extends Component {
                 </>
               )}
 
+// large-screen-size
+
               {matches.large && (
                 <>
                   <div className='news-header'>
@@ -206,7 +211,7 @@ export default class News extends Component {
 
                   <div className='content-loader'>
                     {this.state.isLoading ? (
-                      <FontAwesomeIcon icon='circle-notch' spin />
+                       <FontAwesomeIcon icon='circle-notch' spin />
                     ) : null}
                   </div>
 

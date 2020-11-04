@@ -53,6 +53,11 @@ const Nav = (props) => {
       Blog
     </Link>
 
+    <Link className='nav-links' to='/contact'>
+      <FontAwesomeIcon icon='address-card' />
+      Contact
+    </Link>
+
     {props.loggedInStatus === 'LOGGED_IN' ? (
       <FontAwesomeIcon
         onClick={handleSignOut}

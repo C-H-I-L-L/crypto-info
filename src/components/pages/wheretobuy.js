@@ -16,9 +16,10 @@ export default function whereToBuy() {
   }
 
   var dootStyles = {
-    width: '500px',
+    width: '50%',
     border: '3px solid $off-white',
-    borderRadius: '5px'
+    borderRadius: '35px',
+    boxShadow: '0px 1px 79px -1px rgba(0,0,0,0.5)'
   }
   return (
     <div className='buying-container' style={containerStyles}>
@@ -114,8 +115,9 @@ export default function whereToBuy() {
               most popular fluctuate between Binance and OKex, both of which are
               well trusted global exchange networks.
             </p>
+            <h2>How To Simply Buy Bitcoin (no exchanges involved)</h2>
             <img style={dootStyles} src={doot} alt='' />
-            <h2>How to buy with Cash anonymously - P2P Buying</h2>
+            <h3>P2P Buying</h3>
             <strong>AS WITH ALL MEETUPS FROM THE INTERNET:
               <ul>
                 <li>meet in a public place</li>
@@ -137,19 +139,18 @@ export default function whereToBuy() {
               because it involves p2p trading. No middlemen are used to mediate
               the deal - which means no fees are paid at all.
             </p>
-            <h2>How To Simply Buy Bitcoin (no exchanges involved)</h2>
-            <p>
-              <strong>Bitcoin ATM</strong> - Bitcoin ATMs are becoming very
+            
+              <h3>Bitcoin ATM's</h3> <p>Bitcoin ATMs are becoming very
               popular- March tolls about 2,393 Bitcoin ATM machines worldwide,
               with a steady trend upwards. With these machines, the user shows
               up to a physical location and either a) buys Bitcoin using fiat
               currency and has it sent to a Bitcoin wallet or b) sells Bitcoin
               from the atm to withdraw fiat money. These devices are extremely
               convenient and allow traders to not have to deal at all with the
-              “trading” part of crypto.
-            </p>
+              “trading” part of crypto. </p>
+            
             <img className='article-image' src={article2} alt='' />
-            <h2>Decentralized Exchanges</h2>
+            <h3>Decentralized Exchanges</h3>
             <p>
                A decentralized exchange (DEX) is a cryptocurrency exchange which operates in a decentralized way, without a central authority. <br/>
                Check out a list of decentralized exchanges <a href='https://defiprime.com/exchanges'>here</a>.

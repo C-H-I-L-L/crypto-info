@@ -90,7 +90,9 @@ a {
       margin-right: 25px;
 
       h3 {
-        transform: translateX(20px);
+        left: 0;
+        right: 0;
+        margin: auto;
       }
     }
 

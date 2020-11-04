@@ -5,19 +5,20 @@
   position: absolute;
   width: 36px;
   height: 30px;
-  left: 36px;
-  top: 36px;
+  top: 0px;
+  right: 10px;
+  bottom: 0px;
   margin: auto;
 }
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: $light-grey;
+  background: $light-blue;
   position: flex-end;
 }
 /* Color/shape of burger icon bars on hover*/
 .bm-burger-bars-hover {
-  background: #a90000;
+  background: $light-grey;
 }
 
 /* Position and sizing of clickable cross button */
@@ -43,7 +44,7 @@
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
+  background: $light-grey;
   font-size: 1.15em;
   display: flex;
   flex-direction: row;
@@ -73,4 +74,8 @@ a.bm-item.burger-link {
 
 .burger-menu-icon {
   margin-right: 5px;
+}
+
+.burger-menu-container {
+  height: 100%;
 }

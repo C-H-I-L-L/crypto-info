@@ -4,10 +4,10 @@ import Nav from './components/nav/nav';
 import Blog from './components/blog/blog';
 import BlogDetail from './components/pages/blog-detail';
 import WhereToBuy from './components/pages/wheretobuy';
+import ContactUs from './components/pages/contactus';
 import News from './components/pages/news';
 import Auth from './components/auth/login';
 import Icons from './components/helpers/icons';
-import Footer from './components/footer/footer';
 
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -51,10 +51,6 @@ export default class App extends Component {
       .then((response) => {
         const loggedIn = response.data.logged_in;
         const loggedInStatus = this.state.loggedInStatus;
-
-        // If loggedIn and status LOGGED_IN => return data
-        // If loggedIn status NOT_LOGGED_IN => update state
-        // If not loggedIn and status LOGGED_IN => update state
 
         if (loggedIn && loggedInStatus === 'LOGGED_IN') {
           return loggedIn;
@@ -120,17 +116,17 @@ export default class App extends Component {
             {/* {this.state.loggedInStatus === 'LOGGED_IN'
               ? this.authorizedRoutes()
               : null} */}
-
+            <Route path='/contact' component={ContactUs} />
             <Route
               path='/blog'
               render={(props) => (
                 <Blog {...props} loggedInStatus={this.state.loggedInStatus} />
               )}
             />
-
             <Route path='/' component={WhereToBuy} />
+            
           </Switch>
-          <Footer />
+          
         </div>
       </Router>
     );

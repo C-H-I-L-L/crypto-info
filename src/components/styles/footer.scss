@@ -1,13 +1,12 @@
 @import './variables.scss';
 
 .footer {
-  box-shadow: 10px 1px 1px 1px black;
   background-color: $off-white;
+  height: 10%;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 7px 7px 0px 0px;
 
   h3 {
   }
