@@ -3,10 +3,13 @@
 .login-container {
   display: flex;
   justify-content: center;
-  background-image: url('../../resources/images/rickandmorty.png');
+  height: 100%;
+  background-image: url(../../resources/images/rickandmorty.png);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  height: calc(100vh - 186px);
-  margin-top: 0px;
 
   .login-box {
     display: flex;
