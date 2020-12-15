@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+
 import Cards from './components/crypto-card/cards';
 import Nav from './components/nav/nav';
 import Blog from './components/blog/blog';
 import BlogDetail from './components/pages/blog-detail';
 import WhereToBuy from './components/pages/wheretobuy';
 import ContactUs from './components/pages/contactus';
+import CallbackPage from './components/auth/callback';
 import News from './components/pages/news';
 import Auth from './components/auth/login';
 import Icons from './components/helpers/icons';
+
+import { AuthConsumer } from './authContext';
 
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -22,9 +26,12 @@ export default class App extends Component {
 
     this.state = {
       loggedInStatus: 'NOT_LOGGED_IN',
+      role: 'visitor',
     };
   }
+  // new login functions to integrate
 
+  // original login functions
   handleSuccessfulAuth = () => {
     this.setState({
       loggedInStatus: 'LOGGED_IN',
@@ -80,10 +87,15 @@ export default class App extends Component {
   render() {
     return (
       <Router>
+        <AuthConsumer>
+      
+      {({ user }) =>
         <Nav
           loggedInStatus={this.state.loggedInStatus}
+          role={user.role}
           handleSuccessfulLogout={this.handleSuccessfulLogout}
         />
+      }
 
         <div className='container'>
           <Cards />
@@ -124,11 +136,14 @@ export default class App extends Component {
               )}
             />
             <Route path='/' component={WhereToBuy} />
+            <Route path="/callback" component={CallbackPage}/>
             
           </Switch>
           
         </div>
+        </AuthConsumer>
       </Router>
+      
     );
   }
 }

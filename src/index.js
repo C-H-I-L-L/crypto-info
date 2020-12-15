@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
+
+import Auth from './components/auth/Auth';
 
 import './components/styles/mainindex.scss';
 
-import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <Auth>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Auth>,
   document.getElementById('root')
 );
 

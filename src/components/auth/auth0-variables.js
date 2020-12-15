@@ -1,7 +1,7 @@
-export const config = {
-    clientId: process.env.REACT_APP_AUTH0_CLIENT_ID,
-    domain: process.env.REACT_APP_AUTH0_DOMAIN,
+export const AUTH_CONFIG = {
+    domain: "dev-hxmbrjdl.us.auth0.com",
+    clientId: "ixiQ9aBFGSQfKYEwoYGMoIX6KfzlqrDV",
     // For production, redirect and logoutUrl should be on port 3005
-    roleUrl: "https://crypto-info/role",
-    callbackUrl: "http://localhost:3000/callback"
+    roleUrl: 'https://crypto-info/role',
+    callbackUrl: 'http://localhost:3000/callback'
   };

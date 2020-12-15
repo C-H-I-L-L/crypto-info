@@ -109,7 +109,7 @@ class Blog extends Component {
 
   render = () => {
     const blogRecords = this.state.blogItems.map((blogItem) => {
-      if (this.props.loggedInStatus === 'LOGGED_IN') {
+      if (this.props.loggedInStatus === 'LOGGED_IN' && this.props.role === 'admin') {
         return (
           <div key={blogItem.id} className='admin-blog-wrapper'>
             <BlogItem blogItem={blogItem} />
@@ -134,13 +134,13 @@ class Blog extends Component {
           }
         />
 
-        {this.props.loggedInStatus === 'LOGGED_IN' ? (
+        
           <div className='new-blog-link'>
             <a onClick={this.handleNewBlogClick}>
               <FontAwesomeIcon icon='feather-alt' />
             </a>
           </div>
-        ) : null}
+      
 
         <div className='content-loader'>
           {this.state.isLoading ? (

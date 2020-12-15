@@ -5,6 +5,10 @@ import { withRouter } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Media from 'react-media';
 
+// auth stuff
+import { AuthConsumer } from "../../authContext";
+import Login from "../auth/login";
+
 import '../styles/nav.scss';
 
 import BurgerMenu from '../burger-menu/burger-menu';
@@ -31,6 +35,7 @@ const Nav = (props) => {
     };
     
   const navStuff =
+  <AuthConsumer>
     <div className='navbar'>
     <div className='logo'>
       <img src={Logo} />
@@ -44,10 +49,6 @@ const Nav = (props) => {
       News
     </Link>
 
-    {/* {props.loggedInStatus === 'LOGGED_IN'
-      ? dynamicLink('/where-to-buy', 'wheretobuy')
-      : null} */}
-
     <Link className='nav-links' to='/blog'>
       <FontAwesomeIcon icon='blog' />
       Blog
@@ -58,15 +59,21 @@ const Nav = (props) => {
       Contact
     </Link>
 
-    {props.loggedInStatus === 'LOGGED_IN' ? (
-      <FontAwesomeIcon
+    
+    {({ authenticated }) =>
+      authenticated ? (
+        <FontAwesomeIcon
         onClick={handleSignOut}
         icon='sign-out-alt'
         cursor='pointer'
         className='sign-out'
       />
-    ) : null}
+      ) : (
+          <Login />
+      )
+    }
   </div>;
+  </AuthConsumer>
 
   return ( 
   
