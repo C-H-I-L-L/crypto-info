@@ -33,9 +33,24 @@ const Nav = (props) => {
         console.log('error signing out', error);
       });
     };
+
+  // const changeButton = () =>
+  // {({ authenticated }) => (
+  //   authenticated ? (
+  //     <FontAwesomeIcon
+  //     onClick={handleSignOut}
+  //     icon='sign-out-alt'
+  //     cursor='pointer'
+  //     className='sign-out'
+  //     />
+  //     ) : (
+  //         <Login />
+  //     )
+  //   )
+  // }
+    
     
   const navStuff =
-  <AuthConsumer>
     <div className='navbar'>
     <div className='logo'>
       <img src={Logo} />
@@ -59,21 +74,11 @@ const Nav = (props) => {
       Contact
     </Link>
 
-    
-    {({ authenticated }) =>
-      authenticated ? (
-        <FontAwesomeIcon
-        onClick={handleSignOut}
-        icon='sign-out-alt'
-        cursor='pointer'
-        className='sign-out'
-      />
-      ) : (
-          <Login />
-      )
-    }
+    {/* {this.props.loggedInStatus === "LOGGED_IN" ? <Logout /> : null}
+    {this.props.loggedinStatus === "NOT_LOGGED_IN" ? <Login /> : null} */}
+  
   </div>;
-  </AuthConsumer>
+  
 
   return ( 
   

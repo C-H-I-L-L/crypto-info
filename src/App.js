@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Cards from './components/crypto-card/cards';
 import Nav from './components/nav/nav';
@@ -8,76 +10,31 @@ import WhereToBuy from './components/pages/wheretobuy';
 import ContactUs from './components/pages/contactus';
 import CallbackPage from './components/auth/callback';
 import News from './components/pages/news';
-import Auth from './components/auth/login';
 import Icons from './components/helpers/icons';
-
-import { AuthConsumer } from './authContext';
-
-import axios from 'axios';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Auth from './components/auth/login';
 
 import './components/styles/main.scss';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
+    
+    this.state={
+      loggedInStatus: "NOT_LOGGED_IN",
+      user: {},
+      role: "visitor"
+    }
 
     Icons();
-
-    this.state = {
-      loggedInStatus: 'NOT_LOGGED_IN',
-      role: 'visitor',
-    };
-  }
-  // new login functions to integrate
-
-  // original login functions
-  handleSuccessfulAuth = () => {
-    this.setState({
-      loggedInStatus: 'LOGGED_IN',
-    });
-  };
-
-  handleUnsuccessfulAuth = () => {
-    this.setState({
-      loggedInStatus: 'NOT_LOGGED_IN',
-    });
-  };
-
-  handleSuccessfulLogout = () => {
-    this.setState({
-      loggedInStatus: 'NOT_LOGGED_IN',
-    });
-  };
-
-  checkLoginStatus() {
-    return axios
-      .get('https://api.devcamp.space/logged_in', {
-        withCredentials: true,
-      })
-      .then((response) => {
-        const loggedIn = response.data.logged_in;
-        const loggedInStatus = this.state.loggedInStatus;
-
-        if (loggedIn && loggedInStatus === 'LOGGED_IN') {
-          return loggedIn;
-        } else if (loggedIn && loggedInStatus === 'NOT_LOGGED_IN') {
-          this.setState({
-            loggedInStatus: 'LOGGED_IN',
-          });
-        } else if (!loggedIn && loggedInStatus === 'LOGGED_IN') {
-          this.setState({
-            loggedInStatus: 'NOT_LOGGED_IN',
-          });
-        }
-      })
-      .catch((error) => {
-        console.log('Error', error);
-      });
   }
 
-  componentDidMount() {
-    this.checkLoginStatus();
+  initiateLogin = () => {
+  }
+
+  handleAuthentication = () => {
+  }
+
+  logout = () => {
   }
 
   authorizedRoutes() {
@@ -86,31 +43,13 @@ export default class App extends Component {
 
   render() {
     return (
+      // <div className='container'>
       <Router>
-        <AuthConsumer>
-      
-      {({ user }) =>
-        <Nav
-          loggedInStatus={this.state.loggedInStatus}
-          role={user.role}
-          handleSuccessfulLogout={this.handleSuccessfulLogout}
-        />
-      }
+        <Nav loggedInStatus={this.state.loggedInStatus}/>
 
-        <div className='container'>
-          <Cards />
+        <Cards />
 
           <Switch>
-            <Route
-              path='/login'
-              render={(props) => (
-                <Auth
-                  {...props}
-                  handleSuccessfulAuth={this.handleSuccessfulAuth}
-                  handleUnsuccessfulAuth={this.handleUnsuccessfulAuth}
-                />
-              )}
-            />
 
             <Route
               exact
@@ -128,6 +67,7 @@ export default class App extends Component {
             {/* {this.state.loggedInStatus === 'LOGGED_IN'
               ? this.authorizedRoutes()
               : null} */}
+
             <Route path='/contact' component={ContactUs} />
             <Route
               path='/blog'
@@ -140,9 +80,8 @@ export default class App extends Component {
             
           </Switch>
           
-        </div>
-        </AuthConsumer>
       </Router>
+      // </div>
       
     );
   }

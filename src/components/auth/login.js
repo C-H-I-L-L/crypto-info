@@ -89,14 +89,16 @@
 // new login stuff
 
 import React from "react";
+import { AuthConsumer } from "../../authContext";
 
-import { useAuth0 } from '@auth0/auth0-react';
-
-const Login = () => {
-  const { loginWithRedirect } = useAuth0();
-      return <button className="button" onClick={() => loginWithRedirect()}>
+const Login = () => (
+  <AuthConsumer>
+    {({ initiateLogin }) => (
+      <button className="login-button" onClick={initiateLogin}>
         Login
-      </button>;
-}
+      </button>
+    )}
+  </AuthConsumer>
+);
 
 export default Login;
