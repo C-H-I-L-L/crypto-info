@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { withRouter } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Media from 'react-media';
 
-// auth stuff
-import { AuthConsumer } from "../../authContext";
-import Login from "../auth/login";
+import { useAuth0 } from "@auth0/auth0-react";
+import LogoutButton from '../auth/logoutButton';
+import LoginButton from '../auth/loginButton';
 
 import '../styles/nav.scss';
 
@@ -15,42 +14,9 @@ import BurgerMenu from '../burger-menu/burger-menu';
 import Logo from '../../resources/images/crypto-logo.png';
 
 const Nav = (props) => {
-  const dynamicLink = (route, linkText) => {
-    return <Link to='/where-to-buy'>Buy Crypto</Link>;
-  };
-
-  const handleSignOut = () => {
-    axios
-      .delete('https://api.devcamp.space/logout', { withCredentials: true })
-      .then((response) => {
-        if (response.status === 200) {
-          props.history.push('/');
-          props.handleSuccessfulLogout();
-        }
-        return response.data;
-      })
-      .catch((error) => {
-        console.log('error signing out', error);
-      });
-    };
-
-  // const changeButton = () =>
-  // {({ authenticated }) => (
-  //   authenticated ? (
-  //     <FontAwesomeIcon
-  //     onClick={handleSignOut}
-  //     icon='sign-out-alt'
-  //     cursor='pointer'
-  //     className='sign-out'
-  //     />
-  //     ) : (
-  //         <Login />
-  //     )
-  //   )
-  // }
+  
     
-    
-  const navStuff =
+  const navStuff = 
     <div className='navbar'>
     <div className='logo'>
       <img src={Logo} />
@@ -74,10 +40,8 @@ const Nav = (props) => {
       Contact
     </Link>
 
-    {/* {this.props.loggedInStatus === "LOGGED_IN" ? <Logout /> : null}
-    {this.props.loggedinStatus === "NOT_LOGGED_IN" ? <Login /> : null} */}
-  
-  </div>;
+    {useAuth0().isAuthenticated ? <LogoutButton /> : <LoginButton />}
+  </div>
   
 
   return ( 
@@ -106,6 +70,7 @@ const Nav = (props) => {
 
 {matches.large && (
   navStuff
+  
 )}
 </>
 )}
