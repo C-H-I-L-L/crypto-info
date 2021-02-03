@@ -5,8 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Media from 'react-media';
 
 import { useAuth0 } from "@auth0/auth0-react";
-import LogoutButton from '../auth/logoutButton';
-import LoginButton from '../auth/loginButton';
+import AuthenticationButton from '../auth/authenticationbutton';
 
 import '../styles/nav.scss';
 
@@ -14,7 +13,21 @@ import BurgerMenu from '../burger-menu/burger-menu';
 import Logo from '../../resources/images/crypto-logo.png';
 
 const Nav = (props) => {
-  
+  const { user, isAuthenticated } = useAuth0();
+  // >>>>>>>>>>>>>>>>>>>>>>>
+  // not working right now
+  // >>>>>>>>>>>>>>>>>>>>>>>
+  //
+  // const loginOperator = () => {
+  //   if (isAuthenticated && user.email === "cryptoinfo724@gmail.com") {
+  //     return <LogoutButton />, props.changeToAdmin
+  //   }
+  //   if (isAuthenticated && user.email !== "cryptoinfo724@gmail.com") {
+  //     return <LogoutButton />, props.changeToVisitor
+  //   } else {
+  //     return <LoginButton />
+  //   }
+  // }
     
   const navStuff = 
     <div className='navbar'>
@@ -40,11 +53,15 @@ const Nav = (props) => {
       Contact
     </Link>
 
-    {useAuth0().isAuthenticated ? <LogoutButton /> : <LoginButton />}
-  </div>
+    <AuthenticationButton />
+    
+    
+    {/* {loginOperator()} */}
+
+  </div>;
   
 
-  return ( 
+  return (
   
   <Media
     queries={{

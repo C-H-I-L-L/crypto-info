@@ -3,6 +3,8 @@ import BlogModal from '../modals/blog-modal';
 import BlogItem from './blog-item';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { withAuth0 } from '@auth0/auth0-react';
+
 
 import '../styles/blog.scss';
 
@@ -19,6 +21,23 @@ class Blog extends Component {
     };
 
     window.addEventListener('scroll', this.onScroll, false);
+  }
+
+  user = [
+    this.props.auth0
+  ]
+
+  componentDidMount(user) {
+    if (user.email === 'thisbeme.email.yarrr@gmail.com' && this.state.loggedInStatus !== 'LOGGED_IN') {
+      this.setState({
+        loggedInStatus: 'LOGGED_IN'
+      })
+    }
+    if (user.email !== 'thisbeme.email.yarrr@gmail.com' && this.state.loggedInStatus !== 'NOT_LOGGED_IN') {
+      this.setState({
+        loggedInStatus: 'NOT_LOGGED_IN'
+      })
+    }
   }
 
   handleSuccessfulNewBlogSubmission = (blog) => {
@@ -109,10 +128,11 @@ class Blog extends Component {
 
   render = () => {
     const blogRecords = this.state.blogItems.map((blogItem) => {
-      if (this.props.loggedInStatus === 'LOGGED_IN' && this.props.role === 'admin') {
+      if (user.email === "thisbeme.email.yarrr@gmail.com")
+        {
         return (
           <div key={blogItem.id} className='admin-blog-wrapper'>
-            <BlogItem blogItem={blogItem} />
+            <BlogItem email={user.email} blogItem={blogItem} />
 
             <a onClick={() => this.handleDeleteClick(blogItem)}>
               <FontAwesomeIcon icon='trash' />
@@ -123,6 +143,8 @@ class Blog extends Component {
         return <BlogItem key={blogItem.id} blogItem={blogItem} />;
       }
     });
+    
+  
 
     return (
       <div className='blog-container'>
@@ -134,12 +156,15 @@ class Blog extends Component {
           }
         />
 
-        
+        {user.email === "thisbeme.email.yarrr@gmail.com" ? 
           <div className='new-blog-link'>
             <a onClick={this.handleNewBlogClick}>
               <FontAwesomeIcon icon='feather-alt' />
             </a>
           </div>
+        :
+          null
+        }
       
 
         <div className='content-loader'>
@@ -163,4 +188,4 @@ class Blog extends Component {
   };
 }
 
-export default Blog;
+export default withAuth0(Blog);

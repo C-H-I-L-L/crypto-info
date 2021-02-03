@@ -57,42 +57,42 @@ export default class BlogForm extends Component {
     return { addedfile: (file) => this.setState({ featured_image: file.dataURL }) };
   };
 
-  // handleSubmit = (event) => {
-  //   axios({
-  //     method: this.state.apiAction,
-  //     url: this.state.apiUrl,
-  //     data: {
-  //       title: this.state.title,
-  //       content: this.state.content,
-  //       featured_image: this.state.featured_image.file.dataURL,
-  //       published: parseInt(this.state.blog_status),
-  //     },
-  //     withCredentials: true,
-  //   })
-  //     .then((response) => {
-  //       if (this.state.featured_image) {
-  //         this.featuredImageRef.current.dropzone.removeAllFiles();
-  //       }
-  //       console.log('response', response);
-  //       this.setState({
-  //         title: '',
-  //         blog_status: '',
-  //         published: 0,
-  //         featured_image: '',
-  //       });
+  handleSubmit = (event) => {
+    axios({
+      method: this.state.apiAction,
+      url: this.state.apiUrl,
+      data: {
+        title: this.state.title,
+        content: this.state.content,
+        featured_image: this.state.featured_image.file.dataURL,
+        published: parseInt(this.state.blog_status),
+      },
+      withCredentials: true,
+    })
+      .then((response) => {
+        if (this.state.featured_image) {
+          this.featuredImageRef.current.dropzone.removeAllFiles();
+        }
+        console.log('response', response);
+        this.setState({
+          title: '',
+          blog_status: '',
+          published: 0,
+          featured_image: '',
+        });
 
-  //       if (this.props.editMode) {
-  //         this.props.handleUpdateFormSubmission(response.data);
-  //       } else {
-  //         this.props.handleSuccessfullFormSubmission(response.data);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log('handleSubmit for blog error', error);
-  //     });
+        if (this.props.editMode) {
+          this.props.handleUpdateFormSubmission(response.data);
+        } else {
+          this.props.handleSuccessfullFormSubmission(response.data);
+        }
+      })
+      .catch((error) => {
+        console.log('handleSubmit for blog error', error);
+      });
 
-  //   event.preventDefault();
-  // };
+    event.preventDefault();
+  };
 
   // Send a POST request
   // axios({
@@ -152,6 +152,7 @@ export default class BlogForm extends Component {
         }
 
         if (this.props.editMode) {
+          console.log(response.data[0]);
           this.props.handleUpdateFormSubmission(response.data[0]);
         } else {
           this.props.handleSuccessfullFormSubmission(response.data[0]);

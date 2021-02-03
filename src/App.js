@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { useAuth0 } from "@auth0/auth0-react";
+
 
 import Cards from './components/crypto-card/cards';
 import Nav from './components/nav/nav';
@@ -9,44 +9,41 @@ import BlogDetail from './components/pages/blog-detail';
 import WhereToBuy from './components/pages/wheretobuy';
 import ContactUs from './components/pages/contactus';
 import News from './components/pages/news';
-import Icons from './components/helpers/icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useAuth0 } from "@auth0/auth0-react";
 
+import Icons from './components/helpers/icons';
 
 import './components/styles/main.scss';
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    
-    this.state={
-      loggedInStatus: "NOT_LOGGED_IN",
-      user: {},
-      role: "visitor"
-    }
+const App = () => {
+  Icons();
+  const { isLoading, user } = useAuth0();
 
-    Icons();
+  if (isLoading) {
+    return <FontAwesomeIcon icon='circle-notch' spin />;
   }
 
-  initiateLogin = () => {
-  }
+  // changeEmail = (email) => {
+  //   const adminEmail = "cryptoinfo724@gmail.com";
+  //   if (email === adminEmail && this.state.email === adminEmail) {
+  //     return null
+  //   } 
+  //   if (email === adminEmail && this.state.email !== adminEmail) {
+  //       return this.setState({ email: {email} })
+  //     } else {
+  //     return null
+  //   }
+  // }
 
-  handleAuthentication = () => {
-  }
-
-  logout = () => {
-  }
-
-
-
-  authorizedRoutes() {
-    return [<Route path='/where-to-buy' component={WhereToBuy} />];
-  }
-
-  render() {
+  // const authorizedRoutes() {
+  //   return [<Route path='/where-to-buy' component={WhereToBuy} />];
+  // }
+  if (!isLoading) {
     return (
       <div className='container'>
       <Router>
-        <Nav loggedInStatus={this.state.loggedInStatus}/>
+        <Nav />
 
         <Cards />
 
@@ -58,7 +55,6 @@ export default class App extends Component {
               render={(props) => (
                 <BlogDetail
                   {...props}
-                  loggedInStatus={this.state.loggedInStatus}
                 />
               )}
             />
@@ -73,16 +69,18 @@ export default class App extends Component {
             <Route
               path='/blog'
               render={(props) => (
-                <Blog {...props} loggedInStatus={this.state.loggedInStatus} />
+                <Blog {...props} />
               )}
             />
             <Route path='/' component={WhereToBuy} />
             
           </Switch>
-          
+          {user.email}
       </Router>
       </div>
       
     );
   }
 }
+
+export default App;

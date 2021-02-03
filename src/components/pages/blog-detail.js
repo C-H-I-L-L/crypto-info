@@ -6,7 +6,7 @@ import BlogFeaturedImage from '../blog/blog-featured-image';
 import BlogForm from '../blog/blog-form';
 import Share from '../helpers/share';
 
-export default class BlogDetail extends Component {
+class BlogDetail extends Component {
   constructor(props) {
     super(props);
 
@@ -37,7 +37,7 @@ export default class BlogDetail extends Component {
     if (this.props.loggedInStatus === 'LOGGED_IN') {
       this.setState({
         editMode: true,
-      });
+      }); 
     }
   };
 
@@ -83,7 +83,6 @@ export default class BlogDetail extends Component {
               <h1 onClick={this.handleEditClick}>{title}</h1>
 
               <BlogFeaturedImage
-                onClick={console.log(this.state.content)}
                 img={featured_image}
               />
 
@@ -102,3 +101,5 @@ export default class BlogDetail extends Component {
     return <div className='blog-container'>{contentManager()}</div>;
   }
 }
+
+export default BlogDetail;
