@@ -5,6 +5,8 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withAuth0 } from '@auth0/auth0-react';
 
+import { AuthConsumer } from '../../context';
+
 
 import '../styles/blog.scss';
 
@@ -23,22 +25,18 @@ class Blog extends Component {
     window.addEventListener('scroll', this.onScroll, false);
   }
 
-  user = [
-    this.props.auth0
-  ]
-
-  componentDidMount(user) {
-    if (user.email === 'thisbeme.email.yarrr@gmail.com' && this.state.loggedInStatus !== 'LOGGED_IN') {
-      this.setState({
-        loggedInStatus: 'LOGGED_IN'
-      })
-    }
-    if (user.email !== 'thisbeme.email.yarrr@gmail.com' && this.state.loggedInStatus !== 'NOT_LOGGED_IN') {
-      this.setState({
-        loggedInStatus: 'NOT_LOGGED_IN'
-      })
-    }
-  }
+  // componentDidMount(user) {
+  //   if (user.email === 'thisbeme.email.yarrr@gmail.com' && this.state.loggedInStatus !== 'LOGGED_IN') {
+     
+  // } this.setState({
+  //       loggedInStatus: 'LOGGED_IN'
+  //     })
+  //   }
+  //   if (user.email !== 'thisbeme.email.yarrr@gmail.com' && this.state.loggedInStatus !== 'NOT_LOGGED_IN') {
+  //     this.setState({
+  //       loggedInStatus: 'NOT_LOGGED_IN'
+  //     })
+  //   }
 
   handleSuccessfulNewBlogSubmission = (blog) => {
     this.setState({
@@ -127,12 +125,13 @@ class Blog extends Component {
   };
 
   render = () => {
+    const { admin } = this.context;
     const blogRecords = this.state.blogItems.map((blogItem) => {
-      if (user.email === "thisbeme.email.yarrr@gmail.com")
+      if (admin === "true")
         {
         return (
           <div key={blogItem.id} className='admin-blog-wrapper'>
-            <BlogItem email={user.email} blogItem={blogItem} />
+            <BlogItem blogItem={blogItem} />
 
             <a onClick={() => this.handleDeleteClick(blogItem)}>
               <FontAwesomeIcon icon='trash' />
@@ -156,7 +155,7 @@ class Blog extends Component {
           }
         />
 
-        {user.email === "thisbeme.email.yarrr@gmail.com" ? 
+        {this.props.userEmail === "thisbeme.email.yarrr@gmail.com" ? 
           <div className='new-blog-link'>
             <a onClick={this.handleNewBlogClick}>
               <FontAwesomeIcon icon='feather-alt' />
@@ -187,5 +186,6 @@ class Blog extends Component {
     );
   };
 }
+Blog.contextType=AuthConsumer;
 
-export default withAuth0(Blog);
+export default Blog;

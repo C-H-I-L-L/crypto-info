@@ -6,6 +6,8 @@ import BlogFeaturedImage from '../blog/blog-featured-image';
 import BlogForm from '../blog/blog-form';
 import Share from '../helpers/share';
 
+import { AuthConsumer } from '../../context';
+
 class BlogDetail extends Component {
   constructor(props) {
     super(props);
@@ -33,8 +35,8 @@ class BlogDetail extends Component {
     });
   };
 
-  handleEditClick = () => {
-    if (this.props.loggedInStatus === 'LOGGED_IN') {
+  handleEditClick = (isAdmin) => {
+    if (isAdmin === true) {
       this.setState({
         editMode: true,
       }); 
@@ -59,6 +61,8 @@ class BlogDetail extends Component {
   componentDidMount() {
     this.getBlogItem();
   }
+
+  static contextType = AuthConsumer;
 
   render() {
     const { title, content, featured_image, published } = this.state.blogItem;

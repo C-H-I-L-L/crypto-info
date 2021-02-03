@@ -12,6 +12,8 @@ import News from './components/pages/news';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAuth0 } from "@auth0/auth0-react";
 
+import { AuthConsumer } from './context';
+
 import Icons from './components/helpers/icons';
 
 import './components/styles/main.scss';
@@ -19,6 +21,7 @@ import './components/styles/main.scss';
 const App = () => {
   Icons();
   const { isLoading, user } = useAuth0();
+
 
   if (isLoading) {
     return <FontAwesomeIcon icon='circle-notch' spin />;
@@ -39,7 +42,15 @@ const App = () => {
   // const authorizedRoutes() {
   //   return [<Route path='/where-to-buy' component={WhereToBuy} />];
   // }
-  if (!isLoading) {
+  if (!isLoading) { 
+     <AuthConsumer>
+        {logInfo => 
+          {if (user.email === "thisbeme.email.yarrr@gmail.com") {
+           return(logInfo('admin', false));
+          }
+        }}
+      </AuthConsumer>
+
     return (
       <div className='container'>
       <Router>
@@ -75,7 +86,6 @@ const App = () => {
             <Route path='/' component={WhereToBuy} />
             
           </Switch>
-          {user.email}
       </Router>
       </div>
       
