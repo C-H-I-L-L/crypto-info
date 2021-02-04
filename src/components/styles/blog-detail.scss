@@ -1,6 +1,8 @@
 @import './variables.scss';
 
 .blog-detail-container {
+  height: 100%;
+
   .share-icons {
     position: fixed;
     right: 0;
@@ -13,7 +15,6 @@
 
   .blog-post {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: $off-white;

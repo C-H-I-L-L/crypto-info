@@ -3,6 +3,8 @@ import { push as Menu } from 'react-burger-menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import AuthenticationButton from '../auth/authenticationbutton';
+
 
 const BurgerMenu = (props) => {
         return (
@@ -22,14 +24,7 @@ const BurgerMenu = (props) => {
         Blog
       </Link>
 
-      {props.loggedInStatus === 'LOGGED_IN' ? (
-        <FontAwesomeIcon
-          onClick={props.handleSignOut}
-          icon='sign-out-alt'
-          cursor='pointer'
-          className='sign-out'
-        />
-      ) : null}
+      <AuthenticationButton />
     </Menu>
     </div>
     )}

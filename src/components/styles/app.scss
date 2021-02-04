@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 .App {
   /* display: flex; */
   width: 100%;
@@ -6,6 +8,22 @@
   background-color: white;
   overflow: auto;
   font-size: 16px;
+}
+
+.btn-primary {
+  padding: 5px;
+  background-color: $off-white;
+  border-radius: 5px;
+  border: 1px solid $purple;
+  color: $light-blue;
+  transition: 1s;
+  letter-spacing: 1px;
+  transform: translateX(50px);
+
+  &:hover {
+    background-color: $light-purple;
+    color: black;
+  }
 }
 
 .hero {

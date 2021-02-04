@@ -20,7 +20,7 @@ import './components/styles/main.scss';
 
 const App = () => {
   Icons();
-  const { isLoading, user } = useAuth0();
+  const { isLoading, user, isAuthenticated } = useAuth0();
 
 
   if (isLoading) {
@@ -43,14 +43,8 @@ const App = () => {
   //   return [<Route path='/where-to-buy' component={WhereToBuy} />];
   // }
   if (!isLoading) { 
-     <AuthConsumer>
-        {logInfo => 
-          {if (user.email === "thisbeme.email.yarrr@gmail.com") {
-           return(logInfo('admin', false));
-          }
-        }}
-      </AuthConsumer>
-
+    const currentUserEmail = isAuthenticated ? user.email : "";
+    
     return (
       <div className='container'>
       <Router>
@@ -66,6 +60,7 @@ const App = () => {
               render={(props) => (
                 <BlogDetail
                   {...props}
+                  adminEmail={currentUserEmail}
                 />
               )}
             />
@@ -80,7 +75,7 @@ const App = () => {
             <Route
               path='/blog'
               render={(props) => (
-                <Blog {...props} />
+                <Blog {...props} adminEmail={currentUserEmail} />
               )}
             />
             <Route path='/' component={WhereToBuy} />

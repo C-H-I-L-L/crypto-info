@@ -44,7 +44,6 @@ export default class News extends Component {
         >
           {(matches) => (
             <>
-// small-screen-size
 
               {matches.small && (
                 <>
@@ -137,7 +136,6 @@ export default class News extends Component {
                 </>
               )}
 
-// medium-screen-size
 
               {matches.medium && (
                 <>
@@ -197,7 +195,6 @@ export default class News extends Component {
                 </>
               )}
 
-// large-screen-size
 
               {matches.large && (
                 <>

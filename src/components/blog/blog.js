@@ -3,9 +3,6 @@ import BlogModal from '../modals/blog-modal';
 import BlogItem from './blog-item';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { withAuth0 } from '@auth0/auth0-react';
-
-import { AuthConsumer } from '../../context';
 
 
 import '../styles/blog.scss';
@@ -125,13 +122,13 @@ class Blog extends Component {
   };
 
   render = () => {
-    const { admin } = this.context;
+    const admin = "thisbeme.email.yarrr@gmail.com";
     const blogRecords = this.state.blogItems.map((blogItem) => {
-      if (admin === "true")
+      if (this.props.adminEmail === admin)
         {
         return (
           <div key={blogItem.id} className='admin-blog-wrapper'>
-            <BlogItem blogItem={blogItem} />
+            <BlogItem adminEmail={this.props.adminEmail} blogItem={blogItem} />
 
             <a onClick={() => this.handleDeleteClick(blogItem)}>
               <FontAwesomeIcon icon='trash' />
@@ -155,7 +152,7 @@ class Blog extends Component {
           }
         />
 
-        {this.props.userEmail === "thisbeme.email.yarrr@gmail.com" ? 
+        {this.props.adminEmail === admin ? 
           <div className='new-blog-link'>
             <a onClick={this.handleNewBlogClick}>
               <FontAwesomeIcon icon='feather-alt' />
@@ -186,6 +183,5 @@ class Blog extends Component {
     );
   };
 }
-Blog.contextType=AuthConsumer;
 
 export default Blog;

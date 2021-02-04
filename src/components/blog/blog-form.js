@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 import RichTextEditor from '../forms/rich-text-editor';
-import DropzoneComponent from 'react-dropzone-component';
+// import DropzoneComponent from 'react-dropzone-component';
 
 import '../../../node_modules/react-dropzone-component/styles/filepicker.css';
 import '../../../node_modules/dropzone/dist/min/dropzone.min.css';
-import { fileURLToPath } from 'url';
+// import { fileURLToPath } from 'url';
 
 export default class BlogForm extends Component {
   constructor(props) {
@@ -22,6 +22,7 @@ export default class BlogForm extends Component {
     };
 
     this.deleteImage = this.deleteImage.bind(this);
+    this.handleFeaturedImageDrop = this.handleFeaturedImageDrop.bind(this);
     this.featuredImageRef = React.createRef();
   }
 
@@ -32,6 +33,7 @@ export default class BlogForm extends Component {
         title: this.props.blog.title,
         blog_status: this.props.blog.published,
         content: this.props.blog.content,
+        featuredimage: this.props.blog.featured_image,
         apiUrl: `https://polar-garden-00154.herokuapp.com/blogPost/${this.props.blog.id}`,
         apiMethod: 'put',
       });
@@ -53,7 +55,7 @@ export default class BlogForm extends Component {
     };
   };
 
-  handleFeaturedImageDrop = () => {
+  handleFeaturedImageDrop() {
     return { addedfile: (file) => this.setState({ featured_image: file.dataURL }) };
   };
 
@@ -64,7 +66,7 @@ export default class BlogForm extends Component {
       data: {
         title: this.state.title,
         content: this.state.content,
-        featured_image: this.state.featured_image.file.dataURL,
+        featured_image: this.state.featured_image,
         published: parseInt(this.state.blog_status),
       },
       withCredentials: true,
@@ -73,7 +75,6 @@ export default class BlogForm extends Component {
         if (this.state.featured_image) {
           this.featuredImageRef.current.dropzone.removeAllFiles();
         }
-        console.log('response', response);
         this.setState({
           title: '',
           blog_status: '',
@@ -94,39 +95,9 @@ export default class BlogForm extends Component {
     event.preventDefault();
   };
 
-  // Send a POST request
-  // axios({
-  //   method: 'post',
-  //   url: '/user/12345',
-  //   data: {
-  //     firstName: 'Fred',
-  //     lastName: 'Flintstone'
-  //   }
-  // });
-
-  // buildForm() {
-  //   const image =
-  //     this.state.editMode === true
-  //       ? this.state.featured_image
-  //       : this.state.featured_image.dataURL;
-    
-  //   let formData = new FormData();
-
-  //   formData.append("title", this.state.title);
-  //   formData.append("published", this.state.blog_status);
-  //   formData.append("content", this.state.content);
-
-  //   if (this.state.featured_image) {
-  //     formData.append(
-  //       "featured_image",
-  //       image
-  //     );
-  //   }
-  // }
-
   handleSubmit = (event) => {
     const blog_status = this.state.blog_status === true ? 1 : 0;
-    const image = this.state.featured_image === '' ? '' : this.state.featured_image;
+    const image = !this.state.featured_image ? '' : this.state.featured_image;
     
     axios({
       method: this.state.apiMethod,
@@ -152,10 +123,10 @@ export default class BlogForm extends Component {
         }
 
         if (this.props.editMode) {
-          console.log(response.data[0]);
-          this.props.handleUpdateFormSubmission(response.data[0]);
+          this.props.handleUpdateFormSubmission(response.data);
         } else {
           this.props.handleSuccessfullFormSubmission(response.data[0]);
+          window.location.reload();
         }
       })
       .catch((error) => {
@@ -165,57 +136,10 @@ export default class BlogForm extends Component {
     event.preventDefault();
   };
 
-  // handleSubmitDebug = (event) => {
-  //   const image =
-  //     this.state.editMode === true
-  //       ? this.state.featured_image
-  //       : this.state.featured_image.dataURL;
-  //   axios({
-  //     method: this.state.apiMethod,
-  //     url: this.state.apiUrl,
-  //     data: {
-  //       title: this.state.title,
-  //       content: this.state.content,
-  //       published: !!JSON.parse(String(this.state.blog_status).toLowerCase()),
-  //       featured_image: image,
-  //     },
-  //     withCredentials: true,
-  //   })
-  //     .then((response) => {
-  //       this.setState({
-  //         title: '',
-  //         blog_status: false,
-  //         content: '',
-  //         featured_image: '',
-  //       });
-
-  //       if (this.state.featured_image) {
-  //         this.featuredImageRef.current.dropzone.removeAllFiles();
-  //       }
-
-  //       if (this.props.editMode) {
-  //         this.props.handleUpdateFormSubmission(response.data[0]);
-  //       } else {
-  //         this.props.handleSuccessfullFormSubmission(response.data[0]);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log('handleSubmit for blog error', error);
-  //     });
-
-  //   event.preventDefault();
-  // };
-
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
-    console.log(
-      this.state.title,
-      this.state.content,
-      this.state.blog_status,
-      this.state.featured_image
-    );
   };
 
   handleStatusChange = (event) => {
@@ -271,7 +195,11 @@ export default class BlogForm extends Component {
           value={this.state.blog_status}
         /> */}
 
-        <label>
+        {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        Not working riht now
+        >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
+
+        {/* <label>
           Published?
           <select
             name='blog_status'
@@ -282,7 +210,7 @@ export default class BlogForm extends Component {
             <option value='false'>false</option>
             <option value='true'>true</option>
           </select>
-        </label>
+        </label> */}
 
         <div className='one-column'>
           <RichTextEditor
@@ -296,7 +224,10 @@ export default class BlogForm extends Component {
           />
         </div>
 
-        <div className='image-uploaders'>
+        {/* >>>>>>>>>>>>>>>>>>>>>>
+            FUCK IT, doesn't work for now
+            >>>>>>>>>>>>>>>>>>>>>>
+            <div className='image-uploaders'>
           {this.props.editMode && this.props.blog.featured_image ? (
             <div className='blog-image-wrapper'>
               <img src={this.props.blog.featured_image} alt='' />
@@ -311,13 +242,13 @@ export default class BlogForm extends Component {
             <DropzoneComponent
               config={this.componentConfig()}
               djsConfig={this.djsConfig()}
-              eventHandlers={this.handleFeaturedImageDrop()}
+              onDrop={this.handleFeaturedImageDrop()}
               ref={this.featuredImageRef}
             >
               <div className='dz-message'>Featured Image</div>
             </DropzoneComponent>
           )}
-        </div>
+        </div> */}
 
         <button>Save</button>
       </form>

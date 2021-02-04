@@ -5,16 +5,12 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
-import Auth from './components/auth/auth';
-
 import './components/styles/mainindex.scss';
 
 ReactDOM.render(
   <BrowserRouter >
   <Auth0ProviderWithHistory>
-    <Auth>
     <App />
-    </Auth>
     </Auth0ProviderWithHistory>
   </BrowserRouter>,
   document.getElementById('root')

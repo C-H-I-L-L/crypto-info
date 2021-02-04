@@ -10,6 +10,7 @@ const BlogItem = (props) => {
     content,
     title,
     featured_image_url,
+    adminEmail
   } = props.blogItem;
 
   return (

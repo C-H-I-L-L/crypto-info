@@ -5,8 +5,7 @@ import ReactHtmlParser from 'react-html-parser';
 import BlogFeaturedImage from '../blog/blog-featured-image';
 import BlogForm from '../blog/blog-form';
 import Share from '../helpers/share';
-
-import { AuthConsumer } from '../../context';
+import { withAuth0 } from '@auth0/auth0-react';
 
 class BlogDetail extends Component {
   constructor(props) {
@@ -35,12 +34,10 @@ class BlogDetail extends Component {
     });
   };
 
-  handleEditClick = (isAdmin) => {
-    if (isAdmin === true) {
+  handleEditClick = () => {
       this.setState({
         editMode: true,
       }); 
-    }
   };
 
   getBlogItem() {
@@ -62,10 +59,9 @@ class BlogDetail extends Component {
     this.getBlogItem();
   }
 
-  static contextType = AuthConsumer;
-
   render() {
     const { title, content, featured_image, published } = this.state.blogItem;
+    const { user, isAuthenticated } = this.props.auth0;
 
     const contentManager = () => {
       if (this.state.editMode) {
@@ -84,8 +80,12 @@ class BlogDetail extends Component {
               <Share />
             </div>
             <div className='blog-post'>
-              <h1 onClick={this.handleEditClick}>{title}</h1>
-
+              <h1>{title}</h1>
+              {
+                isAuthenticated ? (user.email === "thisbeme.email.yarrr@gmail.com") ? 
+                  (<button onClick={this.handleEditClick}>edit</button>) : (null) 
+                : null
+              }
               <BlogFeaturedImage
                 img={featured_image}
               />
@@ -93,9 +93,11 @@ class BlogDetail extends Component {
               <div className='content'>
                 <div>{ReactHtmlParser(content)}</div>
               </div>
-              {this.props.loggedInStatus === 'LOGGED_IN' ? (
-                <div className='status'>{published}</div>
-              ) : null}
+              {
+                isAuthenticated ? (user.email === "thisbeme.email.yarrr@gmail.com") ? 
+                  (<div className='status'>{published}</div>) : (null) 
+                : null
+              }
             </div>
           </div>
         );
@@ -106,4 +108,4 @@ class BlogDetail extends Component {
   }
 }
 
-export default BlogDetail;
+export default withAuth0(BlogDetail);

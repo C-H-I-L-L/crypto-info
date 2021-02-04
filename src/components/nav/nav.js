@@ -77,7 +77,7 @@ const Nav = (props) => {
       <div className='logo'>
         <img src={Logo} />
       </div>
-      <BurgerMenu loggedInStatus={props.loggedInStatus} handleSignOut={props.handleSignOut} />
+      <BurgerMenu authenticated={isAuthenticated} />
     </div>
     )}
 
