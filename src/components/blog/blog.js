@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/blog.scss';
 
 class Blog extends Component {
-  constructor(props) {
+  constructor() {
     super();
 
     this.state = {
@@ -18,8 +18,8 @@ class Blog extends Component {
       isLoading: true,
       blogModalIsOpen: false,
     };
-
-    window.addEventListener('scroll', this.onScroll, false);
+    // not working right now
+    // window.addEventListener('scroll', this.onScroll, false);
   }
 
   // componentDidMount(user) {
@@ -65,24 +65,24 @@ class Blog extends Component {
     this.getBlogItems();
   }
 
-  componentWillUnmount = () => {
-    window.removeEventListener('scroll', this.onScroll, false);
-  };
+  // componentWillUnmount = () => {
+  //   window.removeEventListener('scroll', this.onScroll, false);
+  // };
 
-  onScroll = () => {
-    if (
-      this.state.isLoading ||
-      this.state.blogItems.length === this.state.totalCount
-    ) {
-      return;
-    }
-    if (
-      window.innerHeight + document.documentElement.scrollTop >=
-      document.documentElement.offsetHeight * 1.2
-    ) {
-      this.getBlogItems();
-    }
-  };
+  // onScroll = () => {
+  //   if (
+  //     this.state.isLoading ||
+  //     this.state.blogItems.length === this.state.totalCount
+  //   ) {
+  //     return;
+  //   }
+  //   if (
+  //     window.innerHeight + document.documentElement.scrollTop >=
+  //     document.documentElement.offsetHeight * 1.2
+  //   ) {
+  //     this.getBlogItems();
+  //   }
+  // };
 
   handleNewBlogClick = () => {
     this.setState({
@@ -170,15 +170,6 @@ class Blog extends Component {
         </div>
 
         <div className='content-container'>{blogRecords}</div>
-        {/* <BlogModal
-          handleModalClose={this.handleModalClose}
-          modalIsOpen={this.state.blogModalIsOpen}
-          handleSuccessfulFormSubmission={this.handleSuccessfulFormSubmission}
-        />
-        <div className='new-blog-link'>
-          <a onClick={this.handleNewBlogClick}>AWM A MODAL!!</a>
-        </div>
-        <div className='posts'>{this.renderPosts()}</div> */}
       </div>
     );
   };

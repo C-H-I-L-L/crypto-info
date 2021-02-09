@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 import RichTextEditor from '../forms/rich-text-editor';
-// import DropzoneComponent from 'react-dropzone-component';
+import DropzoneComponent from 'react-dropzone-component';
 
 import '../../../node_modules/react-dropzone-component/styles/filepicker.css';
 import '../../../node_modules/dropzone/dist/min/dropzone.min.css';
 // import { fileURLToPath } from 'url';
+
 
 export default class BlogForm extends Component {
   constructor(props) {
@@ -22,9 +23,10 @@ export default class BlogForm extends Component {
     };
 
     this.deleteImage = this.deleteImage.bind(this);
-    this.handleFeaturedImageDrop = this.handleFeaturedImageDrop.bind(this);
     this.featuredImageRef = React.createRef();
+    this.componentConfig = this.componentConfig.bind(this);
   }
+
 
   componentWillMount() {
     if (this.props.editMode) {
@@ -40,7 +42,7 @@ export default class BlogForm extends Component {
     }
   }
 
-  componentConfig = () => {
+  componentConfig() {
     return {
       iconFiletypes: ['.jpg', '.png'],
       showFiletypeIcon: true,
@@ -56,8 +58,31 @@ export default class BlogForm extends Component {
   };
 
   handleFeaturedImageDrop() {
-    return { addedfile: (file) => this.setState({ featured_image: file.dataURL }) };
-  };
+   return { addedfile: (file) => {
+    const promise = new Promise((resolve, reject) => {
+      const reader = new FileReader()
+    
+      reader.readAsDataURL(file)
+    
+      reader.onload = () => {
+        if (!!reader.result) {
+          resolve(reader.result)
+        }
+        else {
+          reject(Error("Failed converting to base64"))
+        }
+      }
+    })
+    promise.then(result => {
+      this.setState({
+        featured_image: `${result}`
+      })
+    }, err => {
+      console.log(err)
+    })
+   }
+   }
+  }
 
   handleSubmit = (event) => {
     axios({
@@ -224,9 +249,6 @@ export default class BlogForm extends Component {
           />
         </div>
 
-        {/* >>>>>>>>>>>>>>>>>>>>>>
-            FUCK IT, doesn't work for now
-            >>>>>>>>>>>>>>>>>>>>>>
             <div className='image-uploaders'>
           {this.props.editMode && this.props.blog.featured_image ? (
             <div className='blog-image-wrapper'>
@@ -242,13 +264,12 @@ export default class BlogForm extends Component {
             <DropzoneComponent
               config={this.componentConfig()}
               djsConfig={this.djsConfig()}
-              onDrop={this.handleFeaturedImageDrop()}
-              ref={this.featuredImageRef}
+              eventHandlers={this.handleFeaturedImageDrop()}
             >
               <div className='dz-message'>Featured Image</div>
             </DropzoneComponent>
           )}
-        </div> */}
+        </div>
 
         <button>Save</button>
       </form>
