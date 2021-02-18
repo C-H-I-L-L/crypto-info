@@ -49,6 +49,7 @@ const App = () => {
     const currentUserEmail = isAuthenticated ? user.email : "";
     
     return (
+
       <div className='container'>
       <Router>
         <Nav />
