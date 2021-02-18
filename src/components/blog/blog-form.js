@@ -271,7 +271,7 @@ export default class BlogForm extends Component {
           )}
         </div>
 
-        <button>Save</button>
+        <button className="btn-form">Save</button>
       </form>
     );
   }

@@ -24,7 +24,10 @@ const App = () => {
 
 
   if (isLoading) {
-    return <FontAwesomeIcon icon='circle-notch' spin />;
+    return (
+    <div className="content-loader">
+      <FontAwesomeIcon icon='circle-notch' spin />
+    </div>);
   }
 
   // changeEmail = (email) => {

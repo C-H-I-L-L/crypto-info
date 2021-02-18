@@ -1,6 +1,6 @@
 import React from 'react'
 import MountainStream from '../../resources/images/mountain-stream.jpg';
-import SadPepe from '../../resources/images/sadpepe.png';
+import CoolPepe from '../../resources/images/cool_pepe.jpg';
 
 export default function ContactUs() {
     const backgroundImage = {
@@ -18,10 +18,10 @@ export default function ContactUs() {
     return (
         <div className="contact-container-container" style={backgroundImage}>
         <div className="contact-container">
-            <div className="contact-left-side">
-                <img src={SadPepe} alt='' style={profileImage}/>
+            <div className="contact-top">
+                <img src={CoolPepe} alt='' style={profileImage}/>
             </div>
-            <div className="contact-right-side">
+            <div className="contact-bottom">
                 <div>email address: Bryce.Cox77@gmail.com</div>
             </div>
         </div>

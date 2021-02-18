@@ -90,8 +90,8 @@ class BlogDetail extends Component {
                 img={featured_image}
               />
 
-              <div className='content'>
-                <div>{ReactHtmlParser(content)}</div>
+              <div className='blog-detail-content'>
+                {ReactHtmlParser(content)}
               </div>
               {
                 isAuthenticated ? (user.email === "thisbeme.email.yarrr@gmail.com") ? 

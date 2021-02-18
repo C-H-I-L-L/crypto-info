@@ -16,11 +16,12 @@ export default function whereToBuy() {
   }
 
   var dootStyles = {
-    width: '50%',
+    width: '40%',
     border: '3px solid $off-white',
     borderRadius: '35px',
     boxShadow: '0px 1px 79px -1px rgba(0,0,0,0.5)'
   }
+
   return (
     <div className='buying-container' style={containerStyles}>
       <div className='buying-content'>
@@ -40,10 +41,11 @@ export default function whereToBuy() {
               This article does not contain investment advice or
               recommendations. Every investment and trading move involves risk,
               you should conduct your own research when making a decision.
+              <hr />
+              Also, this article is out-dated and is provided for historical purposes only.
             </p>
-            <p>Many people associate some kind of darkness to cryptocurrencies because
-               of dark-web activity and main-stream media hysteria. However, any cryptocurrency
-               is just a tool. How you use it determines if it's use is right or wrong/dark or not/etc.
+            <p>Many people associate some kind of ill-will or darkness to cryptocurrencies. However, any cryptocurrency
+               is just a tool. How you use it determines if it's use is right or wrong/dark or not, etc.
             </p>
             <p>
               Despite banks closing their doors on credit card purchases of
@@ -155,7 +157,6 @@ export default function whereToBuy() {
                A decentralized exchange (DEX) is a cryptocurrency exchange which operates in a decentralized way, without a central authority. <br/>
                Check out a list of decentralized exchanges <a href='https://defiprime.com/exchanges'>here</a>.
             </p>
-            <h1>Happy and safe travels to you all</h1>
             <p>This article is paraphrased from: <a href='https://cointelegraph.com/news/how-and-where-to-buy-cryptocurrency-overview'>Cointelegraph</a> </p>
           </div>
         </div>

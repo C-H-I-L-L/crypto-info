@@ -7,17 +7,24 @@
 
   .contact-container {
     margin-bottom: 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 70%;
+    width: 50%;
     background-color: $off-white;
     padding: 30px;
     border-radius: 7px;
     box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.75);
 
-    .contact-left-side {
+    .contact-top {
+      display: flex;
+      justify-content: center;
     }
-    .contact-right-side {
+    .contact-bottom {
+      display: flex;
+      justify-content: center;
+      box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
     }
   }
+}
+
+img {
+  border-radius: 10px;
 }

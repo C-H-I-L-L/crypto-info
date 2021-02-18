@@ -26,6 +26,21 @@
   }
 }
 
+.btn-form {
+  padding: 5px;
+  background-color: $off-white;
+  border-radius: 5px;
+  border: 1px solid $purple;
+  color: $light-blue;
+  transition: 1s;
+  letter-spacing: 1px;
+
+  &:hover {
+    background-color: $light-purple;
+    color: white;
+  }
+}
+
 .hero {
   width: 100vw;
   height: 40vh;
