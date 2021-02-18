@@ -2,6 +2,9 @@
   "name": "crypto-info",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "14.15.1"
+  },
   "dependencies": {
     "@auth0/auth0-react": "^1.2.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
@@ -51,7 +54,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI= react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
