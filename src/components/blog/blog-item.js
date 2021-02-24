@@ -6,11 +6,8 @@ import Truncate from 'react-truncate';
 const BlogItem = (props) => {
   const {
     id,
-    blog_status,
     content,
     title,
-    featured_image_url,
-    adminEmail
   } = props.blogItem;
 
   return (

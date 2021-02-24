@@ -9,7 +9,7 @@ import AuthenticationButton from '../auth/authenticationbutton';
 const BurgerMenu = (props) => {
         return (
             <div className='burger-menu-container'>
-            <Menu width={'50%'} right>
+            <Menu width={'40%'} right>
       <Link className='burger-link' to='/where-to-buy'>
         <FontAwesomeIcon className= "burger-menu-icon" icon='home' />
         Home

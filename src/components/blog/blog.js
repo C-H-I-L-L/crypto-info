@@ -61,11 +61,11 @@ class Blog extends Component {
       });
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.getBlogItems();
   }
 
-  // componentWillUnmount = () => {
+  // UNSAFE_componentWillUnmount = () => {
   //   window.removeEventListener('scroll', this.onScroll, false);
   // };
 
@@ -130,9 +130,8 @@ class Blog extends Component {
           <div key={blogItem.id} className='admin-blog-wrapper'>
             <BlogItem adminEmail={this.props.adminEmail} blogItem={blogItem} />
 
-            <a onClick={() => this.handleDeleteClick(blogItem)}>
-              <FontAwesomeIcon icon='trash' />
-            </a>
+              <FontAwesomeIcon onClick={() => this.handleDeleteClick(blogItem)} icon='trash' />
+            
           </div>
         );
       } else {
@@ -154,9 +153,7 @@ class Blog extends Component {
 
         {this.props.adminEmail === admin ? 
           <div className='new-blog-link'>
-            <a onClick={this.handleNewBlogClick}>
-              <FontAwesomeIcon icon='feather-alt' />
-            </a>
+              <FontAwesomeIcon onClick={this.handleNewBlogClick} icon='feather-alt' />
           </div>
         :
           null

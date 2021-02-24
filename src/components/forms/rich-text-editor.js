@@ -13,7 +13,7 @@ export default class RichTextEditor extends Component {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (this.props.editMode && this.props.contentToEdit) {
       const blocksFromHtml = htmlToDraft(this.props.contentToEdit);
       const { contentBlocks, entityMap } = blocksFromHtml;

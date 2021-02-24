@@ -14,8 +14,8 @@
     
       return (
         <Auth0Provider
-          domain='dev-hxmbrjdl.us.auth0.com'
-          clientId='Ur3Hz7u50urUEs74yH2KlwbTOmMVyHfg'
+          domain={domain}
+          clientId={clientId}
           redirectUri={window.location.origin}
           onRedirectCallback={onRedirectCallback}
         >

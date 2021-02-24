@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,7 +13,7 @@ import BurgerMenu from '../burger-menu/burger-menu';
 import Logo from '../../resources/images/crypto-logo.png';
 
 const Nav = (props) => {
-  const { user, isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuth0();
   // >>>>>>>>>>>>>>>>>>>>>>>
   // not working right now
   // >>>>>>>>>>>>>>>>>>>>>>>
@@ -32,7 +32,7 @@ const Nav = (props) => {
   const navStuff = 
     <div className='navbar'>
     <div className='logo'>
-      <img src={Logo} />
+      <img src={Logo} alt='' />
     </div>
     <Link className='nav-links' to='/where-to-buy'>
       <FontAwesomeIcon icon='home' />
@@ -75,7 +75,7 @@ const Nav = (props) => {
             {matches.small && (
     <div className='navbar'>
       <div className='logo'>
-        <img src={Logo} />
+        <img src={Logo} alt='' />
       </div>
       <BurgerMenu authenticated={isAuthenticated} />
     </div>

@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BTC from '../../resources/images/bitcoinwallpaper.jpg';
 import article1 from '../../resources/images/article1.png';
 import article2 from '../../resources/images/atm.jpg';
-import moneh from '../../resources/images/article3.jpg';
 import doot from '../../resources/images/article4.jpeg';
 
 export default function whereToBuy() {
@@ -37,13 +36,13 @@ export default function whereToBuy() {
         {/* BTC picture goes here */}
         <div className='outline-container'>
           <div className='article-body'>
-            <p className='disclaimer'>
+            <div className='disclaimer'>
               This article does not contain investment advice or
               recommendations. Every investment and trading move involves risk,
               you should conduct your own research when making a decision.
               <hr />
               Also, this article is out-dated and is provided for historical purposes only.
-            </p>
+            </div>
             <p>Many people associate some kind of ill-will or darkness to cryptocurrencies. However, any cryptocurrency
                is just a tool. How you use it determines if it's use is right or wrong/dark or not, etc.
             </p>
@@ -55,7 +54,7 @@ export default function whereToBuy() {
               It really is as easy as buying clothes on Amazon. Coinbase, for
               example, is a popular interface to buy crypto with fiat (fiat =
               paper currency like dollars or euro). On{' '}
-              <a href='' className='links'>
+              <a href='http://coinbase.com' className='links'>
                 Coinbase
               </a>
               , users need to create an account and verify identity. After that,

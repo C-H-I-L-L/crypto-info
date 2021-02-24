@@ -28,7 +28,7 @@ export default class BlogForm extends Component {
   }
 
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (this.props.editMode) {
       this.setState({
         id: this.props.blog.id,
@@ -255,9 +255,9 @@ export default class BlogForm extends Component {
               <img src={this.props.blog.featured_image} alt='' />
 
               <div className='image-removal link'>
-                <a href='#' onClick={this.deleteImage}>
+                <button onClick={this.deleteImage}>
                   Remove file
-                </a>
+                </button>
               </div>
             </div>
           ) : (

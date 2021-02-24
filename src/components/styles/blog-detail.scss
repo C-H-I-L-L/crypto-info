@@ -26,9 +26,10 @@
     }
 
     img {
-      height: 30%;
+      height: 100%;
       border: solid 2px rgba(0, 0, 0, 0.25);
       border-radius: 5px;
+      margin-top: 10px;
     }
   }
   .blog-detail-content {
@@ -50,4 +51,5 @@
 .featured-image-wrapper {
   display: flex;
   justify-content: center;
+  height: 25vh;
 }

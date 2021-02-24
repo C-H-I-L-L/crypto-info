@@ -14,7 +14,6 @@ export default function ContactUs() {
         height: '100px'
     }
 
-
     return (
         <div className="contact-container-container" style={backgroundImage}>
         <div className="contact-container">
@@ -22,7 +21,7 @@ export default function ContactUs() {
                 <img src={CoolPepe} alt='' style={profileImage}/>
             </div>
             <div className="contact-bottom">
-                <div>email address: Bryce.Cox77@gmail.com</div>
+                <a href="mailto:bryce.cox77@gmail.com">Email Pepe</a>
             </div>
         </div>
         </div>

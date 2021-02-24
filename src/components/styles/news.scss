@@ -31,7 +31,7 @@
       clear: both;
       display: block;
       width: 96%;
-      background-color: $off-white;
+      background-color: rgba(0,0,0,0.15);
       height: 1px;
       margin-bottom: 0;
       margin-top: 0;
@@ -52,7 +52,7 @@
   background-color: white;
   border-radius: 5px;
   margin: 20px 10px;
-  box-shadow: 2px 2px 10px 10px $off-white;
+  box-shadow: 2px 2px 10px 10px rgba(0,0,0,0.15);
   width: 80vw;
   height: 30vh;
   right: 0;
