@@ -6,6 +6,9 @@
     "node": "14.15.1",
     "npm": "6.14.10"
   },
+  "env": {
+    "process.env.CI" : "false"
+  },
   "dependencies": {
     "@auth0/auth0-react": "^1.2.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
@@ -21,6 +24,7 @@
     "axios": "^0.19.2",
     "cloudinary": "^1.23.0",
     "coinmarketcap-cryptocurrency-icons": "^1.0.1",
+    "cookie": "^0.4.1",
     "cryptocurrency-icons": "^0.16.1",
     "dotenv": "^8.2.0",
     "draft-js": "^0.11.7",
