@@ -26,7 +26,6 @@
     "dotenv": "^8.2.0",
     "draft-js": "^0.11.7",
     "draftjs-to-html": "^0.9.1",
-    "firebase": "^6.6.2",
     "history": "^4.10.1",
     "html-to-draftjs": "^1.5.0",
     "isomorphic-fetch": "^2.2.1",
