@@ -1,0 +1,16 @@
+.auth-button {
+    padding: 5px;
+    background-color: $off-white;
+    border-radius: 5px;
+    border: 1px solid $purple;
+    color: $light-blue;
+    transition: 1s;
+    letter-spacing: 1px;
+    transform: translateX(50px);
+    margin-right: 5px;
+  
+    &:hover {
+      background-color: $light-purple;
+      color: white;
+    }
+}

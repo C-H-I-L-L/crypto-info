@@ -22,7 +22,7 @@ export default class News extends Component {
   componentDidMount() {
     this.setState({ loading: true });
     fetch(
-      `http://newsapi.org/v2/everything?q=bitcoin&from=${moment}&sortBy=publishedAt&apiKey=bbbe441196a54f8b97f2708a349700aa`
+      `https://newsapi.org/v2/everything?q=bitcoin&from=${moment}&sortBy=publishedAt&apiKey=bbbe441196a54f8b97f2708a349700aa`
     )
       .then((response) => {
         return response.json();
@@ -59,7 +59,7 @@ export default class News extends Component {
                           transform: 'translateX(15px)',
                         }}
                       >
-                        Crypto News For: {moment().format('MMMM Do YYYY')}
+                        Crypto-Related News For: {moment().format('MMMM Do YYYY')}
                       </h1>
                     ) : null}
                   </div>
@@ -142,7 +142,7 @@ export default class News extends Component {
                   <div className='news-header'>
                     {this.state.isLoading === false ? (
                       <h1>
-                        Crypto News For: {moment().format('MMMM Do YYYY')}
+                        Crypto-Related News For: {moment().format('MMMM Do YYYY')}
                       </h1>
                     ) : null}
                   </div>
@@ -201,7 +201,7 @@ export default class News extends Component {
                   <div className='news-header'>
                     {this.state.isLoading === false ? (
                       <h1>
-                        Crypto News For: {moment().format('MMMM Do YYYY')}
+                        Crypto-Related News For: {moment().format('MMMM Do YYYY')}
                       </h1>
                     ) : null}
                   </div>
