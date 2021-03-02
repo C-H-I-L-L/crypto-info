@@ -138,7 +138,7 @@ class Blog extends Component {
           }
         />
 
-        {this.props.adminEmail === admin ? 
+        {this.props.currentUserEmail === admin ? 
           <div className='new-blog-link'>
               <FontAwesomeIcon onClick={this.handleNewBlogClick} icon='feather-alt' />
           </div>

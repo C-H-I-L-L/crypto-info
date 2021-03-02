@@ -28,18 +28,6 @@ const App = () => {
     </div>);
   }
 
-  // changeEmail = (email) => {
-  //   const adminEmail = "cryptoinfo724@gmail.com";
-  //   if (email === adminEmail && this.state.email === adminEmail) {
-  //     return null
-  //   } 
-  //   if (email === adminEmail && this.state.email !== adminEmail) {
-  //       return this.setState({ email: {email} })
-  //     } else {
-  //     return null
-  //   }
-  // }
-
   // const authorizedRoutes() {
   //   return [<Route path='/where-to-buy' component={WhereToBuy} />];
   // }
@@ -77,7 +65,7 @@ const App = () => {
             <Route
               path='/blog'
               render={(props) => (
-                <Blog {...props} adminEmail={currentUserEmail} />
+                <Blog {...props} currentUserEmail={currentUserEmail} />
               )}
             />
             <Route path='/' component={WhereToBuy} />
