@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Cards from './components/crypto-card/cards';
 import Nav from './components/nav/nav';
-import Blog from './components/blog/blog';
+import Blog from './components/pages/blog';
 import BlogDetail from './components/pages/blog-detail';
 import WhereToBuy from './components/pages/wheretobuy';
 import ContactUs from './components/pages/contactus';
@@ -62,7 +62,7 @@ const App = () => {
               render={(props) => (
                 <BlogDetail
                   {...props}
-                  adminEmail={currentUserEmail}
+                  currentUserEmail={currentUserEmail}
                 />
               )}
             />

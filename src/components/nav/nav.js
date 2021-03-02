@@ -4,7 +4,6 @@ import { withRouter } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Media from 'react-media';
 
-import { useAuth0 } from "@auth0/auth0-react";
 import AuthenticationButton from '../auth/authenticationbutton';
 
 import '../styles/nav.scss';

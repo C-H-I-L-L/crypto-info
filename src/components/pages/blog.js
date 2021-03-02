@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BlogModal from '../modals/blog-modal';
-import BlogItem from '../blog/blog-itemg-item';
+import BlogItem from '../blog/blog-item';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -21,19 +21,6 @@ class Blog extends Component {
     // not working right now
     // window.addEventListener('scroll', this.onScroll, false);
   }
-
-  // componentDidMount(user) {
-  //   if (user.email === 'thisbeme.email.yarrr@gmail.com' && this.state.loggedInStatus !== 'LOGGED_IN') {
-     
-  // } this.setState({
-  //       loggedInStatus: 'LOGGED_IN'
-  //     })
-  //   }
-  //   if (user.email !== 'thisbeme.email.yarrr@gmail.com' && this.state.loggedInStatus !== 'NOT_LOGGED_IN') {
-  //     this.setState({
-  //       loggedInStatus: 'NOT_LOGGED_IN'
-  //     })
-  //   }
 
   handleSuccessfulNewBlogSubmission = (blog) => {
     this.setState({
@@ -124,11 +111,11 @@ class Blog extends Component {
   render = () => {
     const admin = `${process.env.REACT_APP_ADMIN_EMAIL}`;
     const blogRecords = this.state.blogItems.map((blogItem) => {
-      if (this.props.adminEmail === admin)
+      if (this.props.currentUserEmail === admin)
         {
         return (
           <div key={blogItem.id} className='admin-blog-wrapper'>
-            <BlogItem adminEmail={this.props.adminEmail} blogItem={blogItem} />
+            <BlogItem blogItem={blogItem} />
 
               <FontAwesomeIcon onClick={() => this.handleDeleteClick(blogItem)} icon='trash' />
             

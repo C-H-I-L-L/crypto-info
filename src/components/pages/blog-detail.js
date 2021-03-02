@@ -62,6 +62,7 @@ class BlogDetail extends Component {
   render() {
     const { title, content, featured_image, published } = this.state.blogItem;
     const { user, isAuthenticated } = this.props.auth0;
+    const admin = `${process.env.adminEmail}`;
 
     const contentManager = () => {
       if (this.state.editMode) {
@@ -82,7 +83,7 @@ class BlogDetail extends Component {
             <div className='blog-post'>
               <h1>{title}</h1>
               {
-                isAuthenticated ? (user.email === "thisbeme.email.yarrr@gmail.com") ? 
+                isAuthenticated ? (user.email === admin) ? 
                   (<button onClick={this.handleEditClick}>edit</button>) : (null) 
                 : null
               }
@@ -94,7 +95,7 @@ class BlogDetail extends Component {
                 {ReactHtmlParser(content)}
               </div>
               {
-                isAuthenticated ? (user.email === "thisbeme.email.yarrr@gmail.com") ? 
+                isAuthenticated ? (user.email === admin) ? 
                   (<div className='status'>{published}</div>) : (null) 
                 : null
               }
