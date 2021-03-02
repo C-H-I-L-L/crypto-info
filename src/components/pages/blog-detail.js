@@ -62,7 +62,7 @@ class BlogDetail extends Component {
   render() {
     const { title, content, featured_image, published } = this.state.blogItem;
     const { user, isAuthenticated } = this.props.auth0;
-    const admin = `${process.env.adminEmail}`;
+    const admin = `${process.env.REACT_APP_ADMIN_EMAIL}`;
 
     const contentManager = () => {
       if (this.state.editMode) {
