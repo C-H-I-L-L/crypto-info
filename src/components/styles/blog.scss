@@ -25,16 +25,16 @@
     bottom: 0;
     margin-right: 10px;
 
-    a, path {
-      font-size: 3em;
+    a {
+      font-size: 3em !important;
       cursor: pointer;
-      color: $light-blue;
+      color: $light-blue !important;
       // margin-right: 15px;
       margin-bottom: 15px;
       transition: 0.3s ease-in-out;
 
       &:hover {
-        color: $dark-blue;
+        color: $dark-blue !important;
       }
     }
   }
