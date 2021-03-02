@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 import AuthenticationButton from '../auth/authenticationbutton';
 
 
-const BurgerMenu = (props) => {
+const BurgerMenu = () => {
         return (
             <div className='burger-menu-container'>
             <Menu width={'40%'} right>

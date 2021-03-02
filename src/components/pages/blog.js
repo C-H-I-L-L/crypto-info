@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BlogModal from '../modals/blog-modal';
-import BlogItem from './blog-item';
+import BlogItem from '../blog/blog-itemg-item';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -65,24 +65,24 @@ class Blog extends Component {
     this.getBlogItems();
   }
 
-  // UNSAFE_componentWillUnmount = () => {
-  //   window.removeEventListener('scroll', this.onScroll, false);
-  // };
+  UNSAFE_componentWillUnmount = () => {
+    window.removeEventListener('scroll', this.onScroll, false);
+  };
 
-  // onScroll = () => {
-  //   if (
-  //     this.state.isLoading ||
-  //     this.state.blogItems.length === this.state.totalCount
-  //   ) {
-  //     return;
-  //   }
-  //   if (
-  //     window.innerHeight + document.documentElement.scrollTop >=
-  //     document.documentElement.offsetHeight * 1.2
-  //   ) {
-  //     this.getBlogItems();
-  //   }
-  // };
+  onScroll = () => {
+    if (
+      this.state.isLoading ||
+      this.state.blogItems.length === this.state.totalCount
+    ) {
+      return;
+    }
+    if (
+      window.innerHeight + document.documentElement.scrollTop >=
+      document.documentElement.offsetHeight
+    ) {
+      this.getBlogItems();
+    }
+  };
 
   handleNewBlogClick = () => {
     this.setState({
@@ -122,7 +122,7 @@ class Blog extends Component {
   };
 
   render = () => {
-    const admin = "thisbeme.email.yarrr@gmail.com";
+    const admin = `${process.env.REACT_APP_ADMIN_EMAIL}`;
     const blogRecords = this.state.blogItems.map((blogItem) => {
       if (this.props.adminEmail === admin)
         {

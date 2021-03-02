@@ -13,21 +13,6 @@ import BurgerMenu from '../burger-menu/burger-menu';
 import Logo from '../../resources/images/crypto-logo.png';
 
 const Nav = (props) => {
-  const { isAuthenticated } = useAuth0();
-  // >>>>>>>>>>>>>>>>>>>>>>>
-  // not working right now
-  // >>>>>>>>>>>>>>>>>>>>>>>
-  //
-  // const loginOperator = () => {
-  //   if (isAuthenticated && user.email === "cryptoinfo724@gmail.com") {
-  //     return <LogoutButton />, props.changeToAdmin
-  //   }
-  //   if (isAuthenticated && user.email !== "cryptoinfo724@gmail.com") {
-  //     return <LogoutButton />, props.changeToVisitor
-  //   } else {
-  //     return <LoginButton />
-  //   }
-  // }
     
   const navStuff = 
     <div className='navbar'>
@@ -77,7 +62,7 @@ const Nav = (props) => {
       <div className='logo'>
         <img src={Logo} alt='' />
       </div>
-      <BurgerMenu authenticated={isAuthenticated} />
+      <BurgerMenu />
     </div>
     )}
 
