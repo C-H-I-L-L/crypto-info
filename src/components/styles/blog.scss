@@ -25,7 +25,6 @@
     bottom: 0;
     margin-right: 10px;
 
-    //for styling font-awesome icon locally
     a {
       font-size: 3em !important;
       cursor: pointer;
@@ -37,20 +36,6 @@
       &:hover {
         color: $dark-blue !important;
       }
-
-      //for production styling
-      .fa-feather-alt {
-        font-size: 3em;
-        cursor: pointer;
-        color: $light-blue;
-        // margin-right: 15px;
-        margin-bottom: 15px;
-        transition: 0.3s ease-in-out;
-
-        &:hover {
-          color: $dark-blue !important;
-        }
-      }
     }
   }
 
@@ -61,23 +46,10 @@
     width: 80vw;
     margin-left: 15vw;
 
-    
-  //production styling of trash can icon
-  .admin-blog-wrapper:nth-child(1) > svg:nth-child(2) {
-      text-decoration: none;
-      color: $purple;
-      transition: 0.5s ease-in-out;
-
-      &:hover {
-        color: $light-purple;
-      }
-    }
-
     .content {
       width: 100%;
     }
 
-    //local styling of trash can icon
     a {
       text-decoration: none;
       color: $purple;
