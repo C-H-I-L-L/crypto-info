@@ -25,17 +25,18 @@
     bottom: 0;
     margin-right: 10px;
 
-    svg {
-      font-size: 3em;
-      cursor: pointer;
-      color: $light-blue;
-      // margin-right: 15px;
-      margin-bottom: 15px;
-      transition: 0.3s ease-in-out;
+    .fa-feather-alt {
+      path {
+        font-size: 3em;
+        cursor: pointer;
+        color: $light-blue;
+        // margin-right: 15px;
+        margin-bottom: 15px;
+        transition: 0.3s ease-in-out;
 
-      &:hover {
-        color: $dark-blue;
-      }
+        &:hover {
+          color: $dark-blue;
+        }
     }
   }
 
@@ -50,13 +51,15 @@
       width: 100%;
     }
 
-    svg {
-      text-decoration: none;
-      color: $purple;
-      transition: 0.5s ease-in-out;
+    .fa-trash {
+      path {
+        text-decoration: none;
+        color: $purple;
+        transition: 0.5s ease-in-out;
 
-      &:hover {
-        color: $light-purple;
+        &:hover {
+          color: $light-purple;
+        }
       }
     }
 
