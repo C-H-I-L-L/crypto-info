@@ -25,16 +25,16 @@
     bottom: 0;
     margin-right: 10px;
 
-    a {
-      font-size: 3em !important;
+    .new-blog-icon {
+      font-size: 3em;
       cursor: pointer;
-      color: $light-blue !important;
+      color: $light-blue;
       // margin-right: 15px;
       margin-bottom: 15px;
       transition: 0.3s ease-in-out;
 
       &:hover {
-        color: $dark-blue !important;
+        color: $dark-blue;
       }
     }
   }
@@ -50,7 +50,7 @@
       width: 100%;
     }
 
-    a {
+    .delete-icon {
       text-decoration: none;
       color: $purple;
       transition: 0.5s ease-in-out;

@@ -117,7 +117,7 @@ class Blog extends Component {
           <div key={blogItem.id} className='admin-blog-wrapper'>
             <BlogItem blogItem={blogItem} />
 
-              <FontAwesomeIcon onClick={() => this.handleDeleteClick(blogItem)} icon='trash' />
+              <FontAwesomeIcon onClick={() => this.handleDeleteClick(blogItem)} icon='trash' className="delete-icon" />
             
           </div>
         );
@@ -140,7 +140,7 @@ class Blog extends Component {
 
         {this.props.currentUserEmail === admin ? 
           <div className='new-blog-link'>
-              <FontAwesomeIcon onClick={this.handleNewBlogClick} icon='feather-alt' />
+              <FontAwesomeIcon onClick={this.handleNewBlogClick} icon='feather-alt' className="new-blog-icon" />
           </div>
         :
           null
