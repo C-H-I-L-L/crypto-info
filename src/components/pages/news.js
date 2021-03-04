@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Truncate from 'react-truncate';
 import Media from 'react-media';
+import axios from 'axios';
 
 import magnifyingGlass from '../../resources/images/magnifyingGlass.jpg';
 
@@ -21,7 +22,7 @@ export default class News extends Component {
 
   componentDidMount() {
     this.setState({ loading: true });
-    fetch(
+    axios.get(
       `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=bitcoin&from=${moment}&sortBy=publishedAt&apiKey=bbbe441196a54f8b97f2708a349700aa`
     )
       .then((response) => {
@@ -29,7 +30,10 @@ export default class News extends Component {
       })
       .then((myJson) => {
         this.setState({ articles: myJson.articles, isLoading: false });
-      });
+      })
+      .catch((error) => {
+        console.log('news api fetch error', error)
+      })
   }
 
   render() {
@@ -253,6 +257,6 @@ export default class News extends Component {
           )}
         </Media>
       </>
-    );
+    )
   }
 }
