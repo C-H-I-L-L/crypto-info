@@ -21,7 +21,7 @@ export default class News extends Component {
 
   componentDidMount() {
     this.setState({ loading: true });
-    get(
+    fetch(
       `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=bitcoin&from=${moment}&sortBy=publishedAt&apiKey=bbbe441196a54f8b97f2708a349700aa`
     )
       .then((response) => {
