@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Truncate from 'react-truncate';
 import Media from 'react-media';
-import axios from 'axios';
+// import axios from 'axios';
 
 import magnifyingGlass from '../../resources/images/magnifyingGlass.jpg';
 
@@ -21,19 +21,39 @@ export default class News extends Component {
   }
 
   componentDidMount() {
+    const NewsAPI = require('newsapi');
+    const newsapi = new NewsAPI('bbbe441196a54f8b97f2708a349700aa');
+
     this.setState({ loading: true });
-    axios.get(
-      `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=bitcoin&from=${moment}&sortBy=publishedAt&apiKey=bbbe441196a54f8b97f2708a349700aa`
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((myJson) => {
-        this.setState({ articles: myJson.articles, isLoading: false });
-      })
-      .catch((error) => {
-        console.log('news api fetch error', error)
-      })
+    newsapi.v2.everything({
+      q: 'bitcoin',
+      from: `${moment}`,
+      to: `${moment}`,
+      language: 'en',
+      sortBy: 'relevancy',
+      page: 1
+    }).then((response) => {
+      return response.json();
+    })
+    .then((myJson) => {
+      this.setState({ articles: myJson.articles, isLoading: false });
+    })
+    .catch((error) => {
+      console.log('news api fetch error', error)
+    })
+
+  //   axios.get(
+  //     `https://newsapi.org/v2/everything?q=bitcoin&from=${moment}&sortBy=publishedAt&apiKey=bbbe441196a54f8b97f2708a349700aa`
+  //   )
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((myJson) => {
+  //       this.setState({ articles: myJson.articles, isLoading: false });
+  //     })
+  //     .catch((error) => {
+  //       console.log('news api fetch error', error)
+  //     })
   }
 
   render() {
