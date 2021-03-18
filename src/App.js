@@ -9,6 +9,7 @@ import BlogDetail from './components/pages/blog-detail';
 import WhereToBuy from './components/pages/wheretobuy';
 import ContactUs from './components/pages/contactus';
 import News from './components/pages/news';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAuth0 } from "@auth0/auth0-react";
 
