@@ -153,7 +153,7 @@ class Blog extends Component {
           ) : null}
         </div>
 
-        <div className='content-container'>{blogRecords}</div>
+        <div className='blog-content-container'>{blogRecords}</div>
       </div>
     );
   };

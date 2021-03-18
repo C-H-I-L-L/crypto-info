@@ -24,6 +24,11 @@ const BurgerMenu = () => {
         Blog
       </Link>
 
+      <Link className='burger-link' to='/contact'>
+        <FontAwesomeIcon className= "burger-menu-icon" icon='address-card' />
+        Contact
+      </Link>
+
       <AuthenticationButton />
     </Menu>
     </div>
