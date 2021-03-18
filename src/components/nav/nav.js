@@ -18,7 +18,7 @@ const Nav = (props) => {
     <div className='logo'>
       <img src={Logo} alt='' />
     </div>
-    <Link className='nav-links' to='/where-to-buy'>
+    <Link className='nav-links' to='/'>
       <FontAwesomeIcon icon='home' />
       Home
     </Link>
